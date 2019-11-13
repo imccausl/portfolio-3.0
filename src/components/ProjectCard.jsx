@@ -1,6 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
-import { RichText } from "prismic-reactjs"
 import Button from "components/_ui/Button"
 import styled from "@emotion/styled"
 import dimensions from "styles/dimensions"
@@ -139,8 +137,7 @@ const ProjectCard = ({
 export default ProjectCard
 
 ProjectCard.propTypes = {
-  thumbnail: PropTypes.object.isRequired,
-  title: PropTypes.array.isRequired,
-  description: PropTypes.array.isRequired,
-  uid: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 }
