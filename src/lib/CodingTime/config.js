@@ -13,6 +13,7 @@ const wakaTime = {
     "markdown",
     "docker",
     "bash",
+    "json",
   ],
 }
 
