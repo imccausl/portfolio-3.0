@@ -27,9 +27,8 @@ const DefaultView = ({ error, languages, codingTime }) => {
         <div>
           <h2>
             <span>
-              ... and in the last{" "}
-              <span style={{ color: "orangered" }}>7 days</span> I have worked
-              with{" "}
+              In the last <span style={{ color: "orangered" }}>7 days</span> I
+              have worked with{" "}
             </span>
             {!error && makeLanguageList(languages)}
             <span>

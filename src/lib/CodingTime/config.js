@@ -14,6 +14,7 @@ const wakaTime = {
     "docker",
     "bash",
     "json",
+    "powershell",
   ],
 }
 

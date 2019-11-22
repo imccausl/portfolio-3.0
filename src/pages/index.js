@@ -146,9 +146,6 @@ const RenderBody = ({ home, projects, meta }) => (
       ].concat(meta)}
     />
     <Hero>
-      <div>
-        <h1>I build things for the web...</h1>
-      </div>
       <CodingTime render={props => <DefaultView {...props} />} />
     </Hero>
     <Section>
