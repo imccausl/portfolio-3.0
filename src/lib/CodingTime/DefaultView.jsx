@@ -24,7 +24,14 @@ const DefaultView = ({ error, languages, codingTime }) => {
   return (
     <>
       <header>
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           <h2>
             <span>
               In the last <span style={{ color: "orangered" }}>7 days</span> I

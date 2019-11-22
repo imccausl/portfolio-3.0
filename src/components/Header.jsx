@@ -3,9 +3,7 @@ import { Link } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 
-const HeaderContainer = styled("div")`
-  padding-bottom: 3em;
-`
+const HeaderContainer = styled("div")``
 
 const HeaderContent = styled("div")`
   display: flex;

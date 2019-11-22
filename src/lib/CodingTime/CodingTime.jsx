@@ -1,4 +1,5 @@
 import React from "react"
+import { PropagateLoader } from "react-spinners"
 import fetchJsonp from "fetch-jsonp"
 import { wakaTime } from "./config"
 
@@ -69,7 +70,23 @@ class CodingTime extends React.Component {
 
     console.log(1, loadingLanguages, loadingTimeData)
     if (loadingLanguages || loadingTimeData) {
-      return <div>Loading...</div>
+      return (
+        <header>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "300px",
+            }}
+          >
+            <h2>
+              <PropagateLoader />
+            </h2>
+          </div>
+        </header>
+      )
     }
 
     return this.props.render({ error, languages, codingTime })

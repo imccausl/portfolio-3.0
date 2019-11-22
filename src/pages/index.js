@@ -12,7 +12,6 @@ import { CodingTime, DefaultView } from "../lib/CodingTime"
 import ListRepositories from "../lib/ListRepositories"
 
 const Hero = styled("div")`
-  padding-top: 2.5em;
   margin-bottom: 10em;
   max-width: 830px;
 
