@@ -1,4 +1,5 @@
 import React from "react"
+import { Loading } from "../common"
 
 function prettifyRepoName(name) {
   const nameArray = name.split("-")
@@ -59,7 +60,7 @@ class ListRepositories extends React.Component {
     const { portfolioData, loading, error } = this.state
 
     if (loading) {
-      return <div>Loading...</div>
+      return <Loading />
     }
 
     if (!loading && error) {
