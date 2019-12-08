@@ -12,7 +12,7 @@ import { CodingTime, DefaultView } from "../lib/CodingTime"
 import ListRepositories from "../lib/ListRepositories"
 
 const Hero = styled("div")`
-  margin-bottom: 10em;
+  margin-bottom: 1em;
   max-width: 830px;
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
@@ -82,7 +82,7 @@ const Hero = styled("div")`
 `
 
 const Section = styled("div")`
-  margin-bottom: 10em;
+  margin-bottom: 2em;
   display: flex;
   flex-direction: column;
 
@@ -149,7 +149,7 @@ const RenderBody = ({ home, projects, meta }) => (
     </Hero>
     <Section>
       <div>
-        <h1>Projects</h1>
+        <h1>Things I've Been Working On</h1>
       </div>
 
       <ListRepositories
