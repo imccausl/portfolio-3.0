@@ -13,7 +13,6 @@ import ListRepositories from "../lib/ListRepositories"
 
 const Hero = styled("div")`
   margin-bottom: 1em;
-  max-width: 830px;
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     margin-bottom: 3em;
