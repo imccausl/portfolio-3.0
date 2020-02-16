@@ -15,6 +15,9 @@ const wakaTime = {
     "bash",
     "json",
     "powershell",
+    "xml",
+    "csv",
+    "git config",
   ],
 }
 
