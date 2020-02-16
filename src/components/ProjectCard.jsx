@@ -106,12 +106,12 @@ const ProjectCard = ({
           rel="noopener noreferrer"
           style={{ marginRight: "10px", marginBottom: "10px" }}
         >
-          <Button className="Button--secondary">Github</Button>
+          <Button className="Button--secondary">View Repo</Button>
         </a>
 
         <a href={website} target="_blank" rel="noopener noreferrer">
           <Button className="Button--secondary" disabled={!website}>
-            Demo
+            View Demo
           </Button>
         </a>
       </CardActionContainer>

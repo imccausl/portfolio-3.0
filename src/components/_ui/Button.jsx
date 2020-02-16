@@ -7,16 +7,14 @@ const ButtonContainer = styled("button")`
   padding: 1em 2em;
   background: ${colors.blue400};
   font-weight: 600;
-  color: white;
+  color: #5393fe;
   outline: none;
-  border: none;
+  border: 1px solid #5393fe;
   font-size: 1rem;
-  border-radius: 0.3em;
   position: relative;
   transition: background 100ms ease-in-out;
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
-    padding: 0.8em 1.8em;
     font-size: 1em;
   }
 
@@ -48,7 +46,7 @@ const ButtonContainer = styled("button")`
   &.Button--secondary {
     background: ${colors.blue200};
     color: ${colors.blue600};
-    padding: 0.95em 1.8em;
+    padding: 0.5em 1.8em;
     font-size: 0.95rem;
 
     &:hover:enabled {
