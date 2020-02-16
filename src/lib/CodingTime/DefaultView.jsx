@@ -32,7 +32,13 @@ const DefaultView = ({ error, languages, codingTime }) => {
             alignItems: "center",
           }}
         >
-          <h2>
+          <h2
+            style={{
+              background: "#F4F4F4",
+              padding: "5px 10px",
+              border: "1px solid #dfdfdf",
+            }}
+          >
             <span>
               In the last <span style={{ color: "orangered" }}>7 days</span> I
               have worked with{" "}
