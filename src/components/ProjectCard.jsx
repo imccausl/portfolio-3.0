@@ -72,7 +72,6 @@ const ProjectCardImageContainer = styled("div")`
   position: relative;
 
   border: 2px solid #f4f4f4;
-  padding: 10px;
   min-height: 400px;
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
