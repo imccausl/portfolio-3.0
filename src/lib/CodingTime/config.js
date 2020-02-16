@@ -19,6 +19,9 @@ const wakaTime = {
     "csv",
     "git config",
   ],
+  mapExtensionToLanguage: {
+    JSX: "React",
+  },
 }
 
 const colors = ["#5393fe", "#F46B3F", "#B57BFF", "#6CBB47", "#17B1B1"]

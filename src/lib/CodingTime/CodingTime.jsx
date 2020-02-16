@@ -15,10 +15,9 @@ class CodingTime extends React.Component {
   componentDidMount() {
     fetchJsonp(wakaTime.languageLink).then(response =>
       response.json().then(data => {
-        console.log(data)
         this.setState({
           loadingLanguages: false,
-          languages: this.filterLanguages(data),
+          languages: this.replaceLanguages(this.filterLanguages(data)),
         })
       })
     )
@@ -43,6 +42,22 @@ class CodingTime extends React.Component {
         return item
       }
     })
+  }
+
+  replaceLanguages(data) {
+    const extensions = Object.keys(wakaTime.mapExtensionToLanguage)
+    if (extensions && extensions.length) {
+      return data.map(language => {
+        if (extensions.includes(language.name)) {
+          return {
+            name: wakaTime.mapExtensionToLanguage[language.name],
+            percent: language.percent,
+          }
+        }
+
+        return language
+      })
+    }
   }
 
   parseTime(response) {
