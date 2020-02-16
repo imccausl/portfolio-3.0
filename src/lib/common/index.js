@@ -1,3 +1,3 @@
-import Loading from "./Loading"
-
-export { Loading }
+import Loading from './Loading';
+import Placeholder from './Placeholder';
+export { Loading, Placeholder };
