@@ -33,10 +33,6 @@ const ProjectCardContainer = styled("div")`
 const ProjectCardContent = styled("div")`
   background: white;
 
-  @media (max-width: 950px) {
-    padding: 3.25em 2.5em 1em 2.5em;
-  }
-
   @media (max-width: ${dimensions.maxwidthTablet}px) {
     grid-row: 1;
   }

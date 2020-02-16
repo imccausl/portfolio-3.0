@@ -146,11 +146,7 @@ const RenderBody = ({ home, projects, meta }) => (
     <Hero>
       <CodingTime render={props => <DefaultView {...props} />} />
     </Hero>
-    <Section>
-      <div>
-        <h1>Things I've Been Working On</h1>
-      </div>
-
+    <Section id="projects">
       <ListRepositories
         render={({
           name,
