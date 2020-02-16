@@ -83,7 +83,6 @@ class CodingTime extends React.Component {
       error,
     } = this.state
 
-    console.log(1, loadingLanguages, loadingTimeData)
     if (loadingLanguages || loadingTimeData) {
       return <Loading />
     }

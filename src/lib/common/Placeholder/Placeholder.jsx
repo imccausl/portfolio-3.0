@@ -15,8 +15,8 @@ const placeholderStyles = {
   alignItems: "center",
   justifyContent: "space-between",
 }
-const placeholderItem = (
-  <div style={placeholderStyles}>
+const MakePlaceholderItem = index => (
+  <div key={`placeholder-item-${index}`} style={placeholderStyles}>
     <TextBlock rows={7} color="lightgrey" style={{ marginRight: "20px" }} />
     <RectShape color="lightgrey" style={{ width: 411, height: 255 }} />
   </div>
@@ -26,7 +26,7 @@ const placeholder = num => {
   const placeholders = []
 
   for (let i = 0; i < num; i++) {
-    placeholders.push(placeholderItem)
+    placeholders.push(MakePlaceholderItem(i + 1))
   }
 
   return placeholders

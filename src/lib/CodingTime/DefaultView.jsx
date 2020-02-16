@@ -6,7 +6,7 @@ const makeLanguageList = languages => {
     const colorIndex = Math.floor(Math.random() * colors.length)
 
     return (
-      <span>
+      <span key={`${lang.percent}-${lang.name}`}>
         <span style={{ color: colors[colorIndex] }}>{lang.name}</span>
         {`${
           index === languages.length - 2
