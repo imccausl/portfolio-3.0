@@ -171,7 +171,6 @@ const RenderBody = ({ home, projects, meta }) => (
         )}
       />
     </Section>
-    <Section></Section>
   </>
 )
 
