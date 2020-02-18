@@ -31,6 +31,10 @@ const ProjectCardContainer = styled("div")`
 `
 
 const ProjectCardContent = styled("div")`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
   background: white;
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
@@ -44,13 +48,14 @@ const ProjectCardCategory = styled("h6")`
 `
 
 const ProjectCardTitle = styled("h3")`
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
+  margin-bottom: 0;
+  margin-top: 0;
 `
 
 const ProjectCardBlurb = styled("div")`
   margin-bottom: 0.5em;
   margin-top: 0.5em;
+  flex-grow: 1;
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
     margin-bottom: 2.5em;
@@ -104,6 +109,15 @@ const ProjectPreview = styled("div")`
   flex-wrap: nowrap;
 `
 
+const LinkButton = styled("button")`
+  font-size: 1em;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #3a67b2;
+  padding: 0;
+`
+
 const ProjectCard = ({
   title,
   description,
@@ -114,11 +128,23 @@ const ProjectCard = ({
 }) => (
   <ProjectCardContainer>
     <ProjectCardContent className="ProjectCardContent">
-      <ProjectCardCategory>
-        {moment(updated_at).format("DD MMMM YYYY")}
-      </ProjectCardCategory>
-      <ProjectCardTitle>{title}</ProjectCardTitle>
+      <div>
+        <ProjectCardCategory>
+          {moment(updated_at).format("DD MMMM YYYY")}
+        </ProjectCardCategory>
+        <ProjectCardTitle>{title}</ProjectCardTitle>
+      </div>
       <ProjectCardBlurb>{description}</ProjectCardBlurb>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "flex-start",
+        }}
+      >
+        <LinkButton>More...</LinkButton>
+      </div>
     </ProjectCardContent>
     <ProjectPreview>
       <ProjectCardImageContainer>
