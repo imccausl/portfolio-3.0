@@ -4,6 +4,8 @@ import colors from "styles/colors"
 import dimensions from "styles/dimensions"
 
 const ButtonContainer = styled("button")`
+  display: inline-block;
+  width: 100%;
   padding: 1em 2em;
   background: ${colors.blue400};
   font-weight: 600;

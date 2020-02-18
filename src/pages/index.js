@@ -85,10 +85,6 @@ const Section = styled("div")`
   display: flex;
   flex-direction: column;
 
-  div {
-    margin-bottom: 20px;
-  }
-
   h1 {
     display: inline-block;
     color: rgb(244, 107, 63);
@@ -146,7 +142,7 @@ const RenderBody = ({ home, projects, meta }) => (
     <Hero>
       <CodingTime render={props => <DefaultView {...props} />} />
     </Hero>
-    <Section id="projects">
+    <Section id="projects" style={{ marginBottom: 0 }}>
       <ListRepositories
         render={({
           name,
