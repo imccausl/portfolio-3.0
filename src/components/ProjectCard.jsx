@@ -8,8 +8,8 @@ import moment from "moment"
 
 const ProjectCardContainer = styled("div")`
   display: grid;
-  grid-template-columns: minmax(250px, 1fr) 2fr;
-  grid-gap: 120px;
+  grid-template-columns: minmax(250px, 1fr) 1fr;
+  grid-gap: 30px;
   margin-bottom: 4em;
   transition: all 150ms ease-in-out;
   text-decoration: none;
@@ -63,7 +63,7 @@ const CardActionContainer = styled("div")`
   flex-direction: row;
 `
 
-const ProjectCardImageContainer = styled("div")`
+const ProjectCardImage = styled("div")`
   background: ${colors.grey200};
   display: flex;
   justify-content: center;
@@ -116,7 +116,7 @@ const ProjectCard = ({
         </a>
       </CardActionContainer>
     </ProjectCardContent>
-    <ProjectCardImageContainer
+    <ProjectCardImage
       className="ProjectCardImageContainer"
       style={{
         backgroundImage: `url(${thumbnail})`,
@@ -124,7 +124,7 @@ const ProjectCard = ({
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-    ></ProjectCardImageContainer>
+    ></ProjectCardImage>
   </ProjectCardContainer>
 )
 
