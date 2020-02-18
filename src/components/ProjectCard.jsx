@@ -75,7 +75,8 @@ const CardActionContainer = styled("div")`
 `
 
 const ProjectCardImage = styled("div")`
-  height: 100%;
+  max-height: 200px;
+  min-height: 250px;
   width: 100%;
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
@@ -97,7 +98,11 @@ const ProjectCardImageContainer = styled("div")`
   padding: 5px;
 `
 
-const ProjectPreview = styled("div")``
+const ProjectPreview = styled("div")`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+`
 
 const ProjectCard = ({
   title,
