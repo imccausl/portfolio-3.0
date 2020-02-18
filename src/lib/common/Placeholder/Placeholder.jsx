@@ -14,6 +14,7 @@ const placeholderStyles = {
   flexWrap: "nowrap",
   alignItems: "center",
   justifyContent: "space-between",
+  marginBottom: "20px",
 }
 const MakePlaceholderItem = index => (
   <div key={`placeholder-item-${index}`} style={placeholderStyles}>
