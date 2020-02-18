@@ -8,8 +8,8 @@ import moment from "moment"
 
 const ProjectCardContainer = styled("div")`
   display: grid;
-  grid-template-columns: minmax(250px, 1fr) 2fr;
-  grid-gap: 120px;
+  grid-template-columns: minmax(250px, 1fr) 1fr;
+  grid-gap: 30px;
   margin-bottom: 4em;
   transition: all 150ms ease-in-out;
   text-decoration: none;
@@ -59,20 +59,25 @@ const ProjectCardBlurb = styled("div")`
 
 const CardActionContainer = styled("div")`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: row;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    width: 100%;
+  }
+
+  a:first-of-type {
+    margin-right: 10px;
+  }
 `
 
-const ProjectCardImageContainer = styled("div")`
-  background: ${colors.grey200};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-
-  border: 2px solid #f4f4f4;
-  min-height: 400px;
+const ProjectCardImage = styled("div")`
+  max-height: 200px;
+  min-height: 250px;
+  width: 100%;
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
     padding-top: 3em;
@@ -82,6 +87,21 @@ const ProjectCardImageContainer = styled("div")`
     justify-content: flex-start;
     min-height: 250px;
   }
+`
+
+const ProjectCardImageContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #f4f4f4;
+  padding: 5px;
+`
+
+const ProjectPreview = styled("div")`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 `
 
 const ProjectCard = ({
@@ -99,13 +119,20 @@ const ProjectCard = ({
       </ProjectCardCategory>
       <ProjectCardTitle>{title}</ProjectCardTitle>
       <ProjectCardBlurb>{description}</ProjectCardBlurb>
+    </ProjectCardContent>
+    <ProjectPreview>
+      <ProjectCardImageContainer>
+        <ProjectCardImage
+          style={{
+            backgroundImage: `url(${thumbnail})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+        ></ProjectCardImage>
+      </ProjectCardImageContainer>
       <CardActionContainer>
-        <a
-          href={repo}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ marginRight: "10px", marginBottom: "10px" }}
-        >
+        <a href={repo} target="_blank" rel="noopener noreferrer">
           <Button className="Button--secondary">View Repo</Button>
         </a>
 
@@ -115,16 +142,7 @@ const ProjectCard = ({
           </Button>
         </a>
       </CardActionContainer>
-    </ProjectCardContent>
-    <ProjectCardImageContainer
-      className="ProjectCardImageContainer"
-      style={{
-        backgroundImage: `url(${thumbnail})`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-      }}
-    ></ProjectCardImageContainer>
+    </ProjectPreview>
   </ProjectCardContainer>
 )
 
