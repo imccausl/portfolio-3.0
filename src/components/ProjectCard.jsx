@@ -143,7 +143,7 @@ const ProjectCard = ({
           alignItems: "flex-start",
         }}
       >
-        <LinkButton>More...</LinkButton>
+        <LinkButton>Read More</LinkButton>
       </div>
     </ProjectCardContent>
     <ProjectPreview>
