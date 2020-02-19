@@ -1,10 +1,12 @@
-import React from "react"
-import Button from "components/_ui/Button"
+import React, { useState } from "react"
 import styled from "@emotion/styled"
 import dimensions from "styles/dimensions"
 import colors from "styles/colors"
 import PropTypes from "prop-types"
 import moment from "moment"
+
+import Button from "components/_ui/Button"
+import Overlay from "components/_ui/Overlay"
 
 const ProjectCardContainer = styled("div")`
   display: grid;
@@ -125,52 +127,64 @@ const ProjectCard = ({
   updated_at,
   repo,
   website,
-}) => (
-  <ProjectCardContainer>
-    <ProjectCardContent className="ProjectCardContent">
-      <div>
-        <ProjectCardCategory>
-          {moment(updated_at).format("DD MMMM YYYY")}
-        </ProjectCardCategory>
-        <ProjectCardTitle>{title}</ProjectCardTitle>
-      </div>
-      <ProjectCardBlurb>{description}</ProjectCardBlurb>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "flex-start",
-        }}
-      >
-        <LinkButton>Read More</LinkButton>
-      </div>
-    </ProjectCardContent>
-    <ProjectPreview>
-      <ProjectCardImageContainer>
-        <ProjectCardImage
-          style={{
-            backgroundImage: `url(${thumbnail})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
-        ></ProjectCardImage>
-      </ProjectCardImageContainer>
-      <CardActionContainer>
-        <a href={repo} target="_blank" rel="noopener noreferrer">
-          <Button className="Button--secondary">View Repo</Button>
-        </a>
+}) => {
+  const [modalVisible, setModalVisible] = useState(false)
+  console.log(modalVisible)
+  return (
+    <>
+      <Overlay
+        visible={modalVisible}
+        toggleVisible={() => setModalVisible(!modalVisible)}
+      ></Overlay>
+      <ProjectCardContainer>
+        <ProjectCardContent className="ProjectCardContent">
+          <div>
+            <ProjectCardCategory>
+              {moment(updated_at).format("DD MMMM YYYY")}
+            </ProjectCardCategory>
+            <ProjectCardTitle>{title}</ProjectCardTitle>
+          </div>
+          <ProjectCardBlurb>{description}</ProjectCardBlurb>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "flex-start",
+            }}
+          >
+            <LinkButton onClick={() => setModalVisible(true)}>
+              Read More
+            </LinkButton>
+          </div>
+        </ProjectCardContent>
+        <ProjectPreview>
+          <ProjectCardImageContainer>
+            <ProjectCardImage
+              style={{
+                backgroundImage: `url(${thumbnail})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></ProjectCardImage>
+          </ProjectCardImageContainer>
+          <CardActionContainer>
+            <a href={repo} target="_blank" rel="noopener noreferrer">
+              <Button className="Button--secondary">View Repo</Button>
+            </a>
 
-        <a href={website} target="_blank" rel="noopener noreferrer">
-          <Button className="Button--secondary" disabled={!website}>
-            View Demo
-          </Button>
-        </a>
-      </CardActionContainer>
-    </ProjectPreview>
-  </ProjectCardContainer>
-)
+            <a href={website} target="_blank" rel="noopener noreferrer">
+              <Button className="Button--secondary" disabled={!website}>
+                View Demo
+              </Button>
+            </a>
+          </CardActionContainer>
+        </ProjectPreview>
+      </ProjectCardContainer>
+    </>
+  )
+}
 
 export default ProjectCard
 
