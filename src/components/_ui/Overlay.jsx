@@ -1,7 +1,8 @@
 import React from "react"
+import { useSpring, animated } from "react-spring"
 import styled from "@emotion/styled"
 
-const OverlayContainer = styled("div")`
+const OverlayContainer = styled(animated.div)`
   display: ${props => (props.visible ? "block" : "none")};
   position: fixed;
   z-index: 1000;
@@ -14,10 +15,16 @@ const OverlayContainer = styled("div")`
 
 export default props => {
   const { visible, toggleVisible } = props
-
+  const overlayStyle = useSpring({ opacity: visible ? 1 : 0 })
+  // prevent scrolling under the overlay
   document.body.style.overflow = visible ? "hidden" : "scroll"
+
   return (
-    <OverlayContainer onClick={toggleVisible} visible={visible}>
+    <OverlayContainer
+      style={overlayStyle}
+      onClick={toggleVisible}
+      visible={visible}
+    >
       {props.children}
     </OverlayContainer>
   )
