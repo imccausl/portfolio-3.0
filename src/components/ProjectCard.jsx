@@ -135,7 +135,7 @@ const ProjectCard = ({
     <>
       <Overlay
         visible={modalVisible}
-        toggleVisible={() => setModalVisible(!modalVisible)}
+        toggleVisible={() => setModalVisible(false)}
       >
         <ViewReadme visible={modalVisible} />
       </Overlay>

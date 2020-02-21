@@ -1,10 +1,11 @@
 import React from "react"
-import { useTransition, animated } from "react-spring"
+import { useSpring, animated } from "react-spring"
 import styled from "@emotion/styled"
 
 const OverlayContainer = styled(animated.div)`
   position: fixed;
 
+  pointer-events: none;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -16,30 +17,24 @@ const OverlayContainer = styled(animated.div)`
   top: 0;
   height: 100vh;
   width: 100vw;
-  background: rgba(0, 0, 0, 0.5);
 `
 
 export default props => {
   const { visible, toggleVisible } = props
-  const transitions = useTransition(visible, null, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-  })
+  const fadeStyle = useSpring({ o: visible ? 0.5 : 0 })
   // prevent scrolling under the overlay
   document.body.style.overflow = visible ? "hidden" : "scroll"
 
-  return transitions.map(
-    config =>
-      config.item && (
-        <OverlayContainer
-          style={config.props}
-          key={config.key}
-          onClick={toggleVisible}
-          visible={visible}
-        >
-          {props.children}
-        </OverlayContainer>
-      )
+  return (
+    <OverlayContainer
+      style={{
+        backgroundColor: fadeStyle.o.interpolate(o => `rgba(0,0,0, ${o})`),
+        pointerEvents: visible ? "auto" : "none",
+      }}
+      onClick={toggleVisible}
+      visible={visible}
+    >
+      {props.children}
+    </OverlayContainer>
   )
 }
