@@ -113,6 +113,7 @@ const ProjectPreview = styled("div")`
 `
 
 const LinkButton = styled("button")`
+  cursor: pointer;
   font-size: 1em;
   border: 0;
   outline: none;

@@ -14,7 +14,7 @@ export default props => {
   const { x } = useSpring({
     from: { x: 0 },
     x: visible ? 1 : 0,
-    config: { duration: 500 },
+    config: { duration: 400 },
   })
 
   return (
