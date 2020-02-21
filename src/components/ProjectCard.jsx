@@ -7,6 +7,7 @@ import moment from "moment"
 
 import Button from "components/_ui/Button"
 import Overlay from "components/_ui/Overlay"
+import ViewReadme from "components/_ui/ViewReadme"
 
 const ProjectCardContainer = styled("div")`
   display: grid;
@@ -135,7 +136,9 @@ const ProjectCard = ({
       <Overlay
         visible={modalVisible}
         toggleVisible={() => setModalVisible(!modalVisible)}
-      ></Overlay>
+      >
+        <ViewReadme visible={modalVisible} />
+      </Overlay>
       <ProjectCardContainer>
         <ProjectCardContent className="ProjectCardContent">
           <div>

@@ -4,6 +4,13 @@ import styled from "@emotion/styled"
 
 const OverlayContainer = styled(animated.div)`
   position: fixed;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
   z-index: 1000;
   left: 0;
   top: 0;
