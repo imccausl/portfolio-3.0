@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "@emotion/styled"
 import dimensions from "styles/dimensions"
 import colors from "styles/colors"
@@ -6,8 +6,7 @@ import PropTypes from "prop-types"
 import moment from "moment"
 
 import Button from "components/_ui/Button"
-import Overlay from "components/_ui/Overlay"
-import ViewReadme from "components/_ui/ViewReadme"
+import ViewMoreButton from "components/_ui/ViewMoreButton"
 
 const ProjectCardContainer = styled("div")`
   display: grid;
@@ -112,16 +111,6 @@ const ProjectPreview = styled("div")`
   flex-wrap: nowrap;
 `
 
-const LinkButton = styled("button")`
-  cursor: pointer;
-  font-size: 1em;
-  border: 0;
-  outline: none;
-  background: transparent;
-  color: #3a67b2;
-  padding: 0;
-`
-
 const ProjectCard = ({
   title,
   description,
@@ -130,16 +119,8 @@ const ProjectCard = ({
   repo,
   website,
 }) => {
-  const [modalVisible, setModalVisible] = useState(false)
-  console.log(modalVisible)
   return (
     <>
-      <Overlay
-        visible={modalVisible}
-        toggleVisible={() => setModalVisible(false)}
-      >
-        <ViewReadme visible={modalVisible} />
-      </Overlay>
       <ProjectCardContainer>
         <ProjectCardContent className="ProjectCardContent">
           <div>
@@ -157,9 +138,7 @@ const ProjectCard = ({
               alignItems: "flex-start",
             }}
           >
-            <LinkButton onClick={() => setModalVisible(true)}>
-              Read More
-            </LinkButton>
+            <ViewMoreButton />
           </div>
         </ProjectCardContent>
         <ProjectPreview>
