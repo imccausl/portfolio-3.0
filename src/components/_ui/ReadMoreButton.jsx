@@ -16,7 +16,7 @@ const LinkButton = styled("button")`
 
 export default ({
   title,
-  repo_name,
+  repoName,
   description,
   thumbnail,
   updated_at,
@@ -34,7 +34,7 @@ export default ({
       >
         <ViewReadme
           title={title}
-          repo_name={repo_name}
+          repoName={repoName}
           description={description}
           thumbnail={thumbnail}
           updated_at={updated_at}

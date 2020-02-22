@@ -42,7 +42,7 @@ class ListRepositories extends React.Component {
       } = project
       const newObj = {
         name: prettifyRepoName(name),
-        repo_name: name,
+        repoName: name,
         html_url,
         thumbnail: `https://raw.githubusercontent.com/imccausl/${name}/master/screenshot.png`,
         description,

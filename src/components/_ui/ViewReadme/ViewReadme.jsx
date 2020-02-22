@@ -41,7 +41,7 @@ const ReadMe = props => {
         setData({ loading: false, payload: data, error: false })
       })
     )
-  })
+  }, [])
 
   const renderMarkdown = data => {
     return { __html: marked(data) }
@@ -63,7 +63,7 @@ export default props => {
   const {
     visible,
     title,
-    repo_name,
+    repoName,
     description,
     thumbnail,
     updated_at,
@@ -97,7 +97,7 @@ export default props => {
         website={website}
         hideReadMoreButton={true}
       />
-      <ReadMe repoName={repo_name} />
+      <ReadMe repoName={repoName} />
     </ViewContainer>
   )
 }
