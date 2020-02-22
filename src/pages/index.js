@@ -148,6 +148,7 @@ const RenderBody = ({ home, projects, meta }) => (
           name,
           html_url,
           thumbnail,
+          repoName,
           description,
           created_at,
           updated_at,
@@ -156,6 +157,7 @@ const RenderBody = ({ home, projects, meta }) => (
         }) => (
           <ProjectCard
             key={node_id}
+            repoName={repoName}
             description={description}
             thumbnail={thumbnail}
             title={name}

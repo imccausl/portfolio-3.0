@@ -1,10 +1,12 @@
 import React from "react"
-import Button from "components/_ui/Button"
 import styled from "@emotion/styled"
 import dimensions from "styles/dimensions"
 import colors from "styles/colors"
 import PropTypes from "prop-types"
 import moment from "moment"
+
+import Button from "components/_ui/Button"
+import ReadMoreButton from "components/_ui/ReadMoreButton"
 
 const ProjectCardContainer = styled("div")`
   display: grid;
@@ -45,6 +47,7 @@ const ProjectCardContent = styled("div")`
 const ProjectCardCategory = styled("h6")`
   font-weight: 600;
   color: ${colors.grey600};
+  margin-bottom: 20px;
 `
 
 const ProjectCardTitle = styled("h3")`
@@ -109,73 +112,92 @@ const ProjectPreview = styled("div")`
   flex-wrap: nowrap;
 `
 
-const LinkButton = styled("button")`
-  font-size: 1em;
-  border: 0;
-  outline: none;
-  background: transparent;
-  color: #3a67b2;
-  padding: 0;
-`
+const ActionButtons = props => {
+  const { repo, website } = props
+
+  return (
+    <CardActionContainer>
+      <a href={repo} target="_blank" rel="noopener noreferrer">
+        <Button className="Button--secondary">View Repo</Button>
+      </a>
+
+      <a href={website} target="_blank" rel="noopener noreferrer">
+        <Button className="Button--secondary" disabled={!website}>
+          View Demo
+        </Button>
+      </a>
+    </CardActionContainer>
+  )
+}
 
 const ProjectCard = ({
   title,
   description,
+  repoName,
   thumbnail,
   updated_at,
   repo,
   website,
-}) => (
-  <ProjectCardContainer>
-    <ProjectCardContent className="ProjectCardContent">
-      <div>
-        <ProjectCardCategory>
-          {moment(updated_at).format("DD MMMM YYYY")}
-        </ProjectCardCategory>
-        <ProjectCardTitle>{title}</ProjectCardTitle>
-      </div>
-      <ProjectCardBlurb>{description}</ProjectCardBlurb>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "flex-start",
-        }}
-      >
-        <LinkButton>More...</LinkButton>
-      </div>
-    </ProjectCardContent>
-    <ProjectPreview>
-      <ProjectCardImageContainer>
-        <ProjectCardImage
-          style={{
-            backgroundImage: `url(${thumbnail})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
-        ></ProjectCardImage>
-      </ProjectCardImageContainer>
-      <CardActionContainer>
-        <a href={repo} target="_blank" rel="noopener noreferrer">
-          <Button className="Button--secondary">View Repo</Button>
-        </a>
-
-        <a href={website} target="_blank" rel="noopener noreferrer">
-          <Button className="Button--secondary" disabled={!website}>
-            View Demo
-          </Button>
-        </a>
-      </CardActionContainer>
-    </ProjectPreview>
-  </ProjectCardContainer>
-)
-
-export default ProjectCard
+  hideReadMoreButton,
+  hideActionButtons,
+}) => {
+  return (
+    <>
+      <ProjectCardContainer>
+        <ProjectCardContent className="ProjectCardContent">
+          <div>
+            <ProjectCardCategory>
+              {moment(updated_at).format("DD MMMM YYYY")}
+            </ProjectCardCategory>
+            <ProjectCardTitle>{title}</ProjectCardTitle>
+          </div>
+          <ProjectCardBlurb>{description}</ProjectCardBlurb>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "flex-start",
+            }}
+          >
+            {!hideReadMoreButton && (
+              <ReadMoreButton
+                title={title}
+                repoName={repoName}
+                description={description}
+                thumbnail={thumbnail}
+                updated_at={updated_at}
+                repo={repo}
+                website={website}
+              />
+            )}
+          </div>
+        </ProjectCardContent>
+        <ProjectPreview>
+          <ProjectCardImageContainer>
+            <ProjectCardImage
+              style={{
+                backgroundImage: `url(${thumbnail})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></ProjectCardImage>
+          </ProjectCardImageContainer>
+          {!hideActionButtons && (
+            <ActionButtons repo={repo} website={website} />
+          )}
+        </ProjectPreview>
+      </ProjectCardContainer>
+    </>
+  )
+}
 
 ProjectCard.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 }
+
+export default ProjectCard
+export { ActionButtons }
