@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "@emotion/styled"
 import { useSpring, animated } from "react-spring"
 import marked from "marked"
@@ -13,6 +13,8 @@ const ViewContainer = styled(animated.div)`
   height: 90%;
   overflow-y: scroll;
 `
+
+// configure marked to parse github flavoured markdown
 marked.setOptions({
   renderer: new marked.Renderer(),
   gfm: true,
@@ -22,40 +24,39 @@ const ReadMeContainer = styled("div")`
   overflow-y: scroll;
 `
 
-class ReadMe extends React.Component {
-  state = {
+const ReadMe = props => {
+  const { repoName } = props
+  const [data, setData] = useState({
     loading: true,
     error: false,
-    data: "",
-  }
+    payload: "",
+  })
 
-  componentDidMount() {
+  useEffect(() => {
     fetch(
-      `https://raw.githubusercontent.com/imccausl/tip-distribute/master/README.md`
+      `https://raw.githubusercontent.com/imccausl/${repoName}/master/README.md`
     ).then(response =>
       response.text().then(data => {
         console.log(data)
-        this.setState({ loading: false, data })
+        setData({ loading: false, payload: data, error: false })
       })
     )
-  }
+  })
 
-  renderMarkdown(data) {
+  const renderMarkdown = data => {
     return { __html: marked(data) }
   }
 
-  render() {
-    const { loading, error, data } = this.state
+  const { loading, error, payload } = data
 
-    return (
-      !loading &&
-      !error && (
-        <ReadMeContainer
-          dangerouslySetInnerHTML={this.renderMarkdown(data)}
-        ></ReadMeContainer>
-      )
+  return (
+    !loading &&
+    !error && (
+      <ReadMeContainer
+        dangerouslySetInnerHTML={renderMarkdown(payload)}
+      ></ReadMeContainer>
     )
-  }
+  )
 }
 
 export default props => {
@@ -96,7 +97,7 @@ export default props => {
         website={website}
         hideReadMoreButton={true}
       />
-      <ReadMe repo_name={repo_name} />
+      <ReadMe repoName={repo_name} />
     </ViewContainer>
   )
 }
