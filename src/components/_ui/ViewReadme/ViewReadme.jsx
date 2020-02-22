@@ -31,6 +31,34 @@ marked.setOptions({
 
 const ReadMeContainer = styled("div")`
   overflow-y: scroll;
+
+  h1 {
+    font-size: 1.6em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  h3 {
+    font-size: 1.1em;
+  }
+
+  h4 {
+    font-size: 0.8em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 8px 0 15px 0;
+  }
+
+  p {
+    line-height: 1.5;
+  }
 `
 
 const ActionButtonContainer = styled("div")`
