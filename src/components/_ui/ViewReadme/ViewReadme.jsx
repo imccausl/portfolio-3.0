@@ -1,26 +1,68 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { useSpring, animated } from "react-spring"
+import marked from "marked"
 
 import ProjectCard from "../../ProjectCard"
 
 const ViewContainer = styled(animated.div)`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
   background: white;
   padding: 20px;
   z-index: 1001;
   width: 70%;
   height: 90%;
+  overflow-y: scroll;
 `
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  gfm: true,
+})
+
+const ReadMeContainer = styled("div")`
+  overflow-y: scroll;
+`
+
+class ReadMe extends React.Component {
+  state = {
+    loading: true,
+    error: false,
+    data: "",
+  }
+
+  componentDidMount() {
+    fetch(
+      `https://raw.githubusercontent.com/imccausl/tip-distribute/master/README.md`
+    ).then(response =>
+      response.text().then(data => {
+        console.log(data)
+        this.setState({ loading: false, data })
+      })
+    )
+  }
+
+  renderMarkdown(data) {
+    return { __html: marked(data) }
+  }
+
+  render() {
+    const { loading, error, data } = this.state
+
+    return (
+      !loading &&
+      !error && (
+        <ReadMeContainer
+          dangerouslySetInnerHTML={this.renderMarkdown(data)}
+        ></ReadMeContainer>
+      )
+    )
+  }
+}
 
 export default props => {
   const {
     visible,
     title,
+    repo_name,
     description,
     thumbnail,
     updated_at,
@@ -54,6 +96,7 @@ export default props => {
         website={website}
         hideReadMoreButton={true}
       />
+      <ReadMe repo_name={repo_name} />
     </ViewContainer>
   )
 }

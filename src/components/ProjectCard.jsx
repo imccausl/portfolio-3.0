@@ -114,6 +114,7 @@ const ProjectPreview = styled("div")`
 const ProjectCard = ({
   title,
   description,
+  repo_name,
   thumbnail,
   updated_at,
   repo,
@@ -142,6 +143,7 @@ const ProjectCard = ({
             {!hideReadMoreButton && (
               <ReadMoreButton
                 title={title}
+                repo_name={repo_name}
                 description={description}
                 thumbnail={thumbnail}
                 updated_at={updated_at}
