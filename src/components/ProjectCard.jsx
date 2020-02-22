@@ -111,6 +111,24 @@ const ProjectPreview = styled("div")`
   flex-wrap: nowrap;
 `
 
+const ActionButtons = props => {
+  const { repo, website } = props
+
+  return (
+    <CardActionContainer>
+      <a href={repo} target="_blank" rel="noopener noreferrer">
+        <Button className="Button--secondary">View Repo</Button>
+      </a>
+
+      <a href={website} target="_blank" rel="noopener noreferrer">
+        <Button className="Button--secondary" disabled={!website}>
+          View Demo
+        </Button>
+      </a>
+    </CardActionContainer>
+  )
+}
+
 const ProjectCard = ({
   title,
   description,
@@ -120,6 +138,7 @@ const ProjectCard = ({
   repo,
   website,
   hideReadMoreButton,
+  hideActionButtons,
 }) => {
   return (
     <>
@@ -164,27 +183,20 @@ const ProjectCard = ({
               }}
             ></ProjectCardImage>
           </ProjectCardImageContainer>
-          <CardActionContainer>
-            <a href={repo} target="_blank" rel="noopener noreferrer">
-              <Button className="Button--secondary">View Repo</Button>
-            </a>
-
-            <a href={website} target="_blank" rel="noopener noreferrer">
-              <Button className="Button--secondary" disabled={!website}>
-                View Demo
-              </Button>
-            </a>
-          </CardActionContainer>
+          {!hideActionButtons && (
+            <ActionButtons repo={repo} website={website} />
+          )}
         </ProjectPreview>
       </ProjectCardContainer>
     </>
   )
 }
 
-export default ProjectCard
-
 ProjectCard.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 }
+
+export default ProjectCard
+export { ActionButtons }

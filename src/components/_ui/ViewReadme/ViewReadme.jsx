@@ -4,7 +4,7 @@ import { useSpring, animated } from "react-spring"
 import marked from "marked"
 import sanitizeHtml from "sanitize-html"
 
-import ProjectCard from "../../ProjectCard"
+import ProjectCard, { ActionButtons } from "../../ProjectCard"
 
 const ViewContainer = styled(animated.div)`
   display: flex;
@@ -32,6 +32,13 @@ marked.setOptions({
 const ReadMeContainer = styled("div")`
   border-top: 1px solid #c4c4c4;
   overflow-y: scroll;
+`
+
+const ActionButtonContainer = styled("div")`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
 `
 
 const ReadMe = props => {
@@ -108,8 +115,16 @@ export default props => {
         repo={repo}
         website={website}
         hideReadMoreButton={true}
+        hideActionButtons={true}
       />
       <ReadMe repoName={repoName} />
+      <ActionButtonContainer>
+        <ActionButtons
+          style={{ width: "100%" }}
+          repo={repo}
+          website={website}
+        />
+      </ActionButtonContainer>
     </ViewContainer>
   )
 }
