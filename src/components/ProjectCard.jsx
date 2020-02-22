@@ -6,7 +6,7 @@ import PropTypes from "prop-types"
 import moment from "moment"
 
 import Button from "components/_ui/Button"
-import ViewMoreButton from "components/_ui/ViewMoreButton"
+import ReadMoreButton from "components/_ui/ReadMoreButton"
 
 const ProjectCardContainer = styled("div")`
   display: grid;
@@ -118,6 +118,7 @@ const ProjectCard = ({
   updated_at,
   repo,
   website,
+  hideReadMoreButton,
 }) => {
   return (
     <>
@@ -138,7 +139,16 @@ const ProjectCard = ({
               alignItems: "flex-start",
             }}
           >
-            <ViewMoreButton />
+            {!hideReadMoreButton && (
+              <ReadMoreButton
+                title={title}
+                description={description}
+                thumbnail={thumbnail}
+                updated_at={updated_at}
+                repo={repo}
+                website={website}
+              />
+            )}
           </div>
         </ProjectCardContent>
         <ProjectPreview>

@@ -2,15 +2,32 @@ import React from "react"
 import styled from "@emotion/styled"
 import { useSpring, animated } from "react-spring"
 
+import ProjectCard from "../../ProjectCard"
+
 const ViewContainer = styled(animated.div)`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   background: white;
+  padding: 20px;
   z-index: 1001;
-  width: 60%;
-  height: 80%;
+  width: 70%;
+  height: 90%;
 `
 
 export default props => {
-  const { visible } = props
+  const {
+    visible,
+    title,
+    description,
+    thumbnail,
+    updated_at,
+    repo,
+    website,
+  } = props
+
   const { x } = useSpring({
     from: { x: 0 },
     x: visible ? 1 : 0,
@@ -27,6 +44,16 @@ export default props => {
           })
           .interpolate(x => `scale(${x})`),
       }}
-    ></ViewContainer>
+    >
+      <ProjectCard
+        title={title}
+        description={description}
+        thumbnail={thumbnail}
+        updated_at={updated_at}
+        repo={repo}
+        website={website}
+        hideReadMoreButton={true}
+      />
+    </ViewContainer>
   )
 }

@@ -14,7 +14,14 @@ const LinkButton = styled("button")`
   padding: 0;
 `
 
-export default props => {
+export default ({
+  title,
+  description,
+  thumbnail,
+  updated_at,
+  repo,
+  website,
+}) => {
   const [modalVisible, setModalVisible] = useState(false)
   console.log(modalVisible)
 
@@ -24,7 +31,15 @@ export default props => {
         visible={modalVisible}
         toggleVisible={() => setModalVisible(false)}
       >
-        <ViewReadme visible={modalVisible} />
+        <ViewReadme
+          title={title}
+          description={description}
+          thumbnail={thumbnail}
+          updated_at={updated_at}
+          repo={repo}
+          website={website}
+          visible={modalVisible}
+        />
       </Overlay>
       <LinkButton onClick={() => setModalVisible(true)}>Read More</LinkButton>
     </>
