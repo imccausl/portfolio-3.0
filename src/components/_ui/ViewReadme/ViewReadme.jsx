@@ -6,12 +6,20 @@ import marked from "marked"
 import ProjectCard from "../../ProjectCard"
 
 const ViewContainer = styled(animated.div)`
+  display: flex;
+  flex-direction: column;
   background: white;
   padding: 20px;
   z-index: 1001;
   width: 70%;
   height: 90%;
-  overflow-y: scroll;
+
+  border-radius: 5px;
+  overflow-y: hidden;
+
+  div {
+    margin-bottom: 5px;
+  }
 `
 
 // configure marked to parse github flavoured markdown
@@ -21,6 +29,7 @@ marked.setOptions({
 })
 
 const ReadMeContainer = styled("div")`
+  border-top: 1px solid #c4c4c4;
   overflow-y: scroll;
 `
 
