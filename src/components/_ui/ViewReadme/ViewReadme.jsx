@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import styled from "@emotion/styled"
 import { useSpring, animated } from "react-spring"
 import marked from "marked"
+import sanitizeHtml from "sanitize-html"
 
 import ProjectCard from "../../ProjectCard"
 
@@ -53,7 +54,9 @@ const ReadMe = props => {
   }, [])
 
   const renderMarkdown = data => {
-    return { __html: marked(data) }
+    const cleaned = sanitizeHtml(data)
+
+    return { __html: marked(cleaned) }
   }
 
   const { loading, error, payload } = data
