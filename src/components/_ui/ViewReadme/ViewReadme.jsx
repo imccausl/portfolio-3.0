@@ -10,10 +10,10 @@ const ViewContainer = styled(animated.div)`
   display: flex;
   flex-direction: column;
   background: white;
-  padding: 20px;
+  padding: 10px 20px;
   z-index: 1001;
   width: 70%;
-  height: 90%;
+  max-height: 90%;
 
   border-radius: 5px;
   overflow-y: hidden;
@@ -30,7 +30,6 @@ marked.setOptions({
 })
 
 const ReadMeContainer = styled("div")`
-  border-top: 1px solid #c4c4c4;
   overflow-y: scroll;
 `
 
@@ -118,13 +117,7 @@ export default props => {
         hideActionButtons={true}
       />
       <ReadMe repoName={repoName} />
-      <ActionButtonContainer>
-        <ActionButtons
-          style={{ width: "100%" }}
-          repo={repo}
-          website={website}
-        />
-      </ActionButtonContainer>
+      <ActionButtons repo={repo} website={website} />
     </ViewContainer>
   )
 }
