@@ -1,4 +1,6 @@
 import React from "react"
+import { useSpring, animated } from "react-spring"
+
 import { colors } from "./config"
 
 const makeLanguageList = languages => {
@@ -21,6 +23,12 @@ const makeLanguageList = languages => {
 }
 
 const DefaultView = ({ error, languages, codingTime }) => {
+  const coding = useSpring({
+    minutes: codingTime.minutes,
+    hours: codingTime.hours,
+    from: { minutes: 0, hours: 0 },
+  })
+  console.log(coding.minutes)
   return (
     <>
       <header>
@@ -47,18 +55,19 @@ const DefaultView = ({ error, languages, codingTime }) => {
             <span>
               {" "}
               for a total of{" "}
+              <animated.span style={{ color: "orangered" }}>
+                {coding.hours.interpolate(x => x.toFixed(0))}
+              </animated.span>
               <span style={{ color: "orangered" }}>
-                {" "}
-                {`${codingTime.hours} ${
-                  codingTime.hours === 1 ? "hour" : "hours"
-                }`}
+                {` ${codingTime.hours === 1 ? "hour" : "hours"}`}
               </span>{" "}
               and{" "}
+              <animated.span style={{ color: "orangered" }}>
+                {coding.minutes.interpolate(x => x.toFixed(0))}
+              </animated.span>
               <span style={{ color: "orangered" }}>
                 {" "}
-                {`${codingTime.minutes} ${
-                  codingTime.minutes === 1 ? "minute" : "minutes"
-                }`}
+                {codingTime.minutes === 1 ? "minute" : "minutes"}
               </span>
               .
             </span>
