@@ -102,6 +102,7 @@ const Section = styled("div")`
 const RenderBody = ({ home, projects, meta }) => (
   <>
     <Helmet
+      id="top"
       title={meta.title}
       titleTemplate={`%s | ${meta.title}`}
       meta={[
