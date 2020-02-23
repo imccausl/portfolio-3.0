@@ -6,6 +6,12 @@ import colors from "styles/colors"
 import SocialMediaMenu from "./_ui/SocialMediaMenu"
 
 const FooterContainer = styled("div")`
+  background: #9fc3ff;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  padding-top: 3em;
+
   padding-bottom: 3em;
   display: flex;
   flex-direction: column;
@@ -46,7 +52,7 @@ const Footer = props => {
         </h3>
       </Link>
       <SocialMediaMenu socialUsernames={social} />
-      <FooterAuthor>© 2019</FooterAuthor>
+      <FooterAuthor>© 2019 - {new Date().getFullYear()}</FooterAuthor>
     </FooterContainer>
   )
 }
