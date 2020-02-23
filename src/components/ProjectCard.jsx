@@ -52,6 +52,8 @@ const ProjectCardCategory = styled("h6")`
 `
 
 const ProjectCardTitle = styled("h3")`
+  font-weight: 600;
+  font-size: 1.7em;
   margin-bottom: 0;
   margin-top: 0;
 `

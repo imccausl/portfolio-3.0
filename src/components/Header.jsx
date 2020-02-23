@@ -64,7 +64,7 @@ const Header = () => {
     >
       <HeaderContent>
         <HeaderStyle>
-          <Link to="#top">
+          <Link to="/#top">
             <span style={{ color: colors.blue700 }}>ian</span>mccaus
             <span style={{ color: colors.blue300 }}>.</span>land
           </Link>
