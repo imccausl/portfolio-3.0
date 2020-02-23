@@ -41,6 +41,7 @@ const ProjectCardContent = styled("div")`
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
     grid-row: 1;
+    margin-bottom: 20px;
   }
 `
 
