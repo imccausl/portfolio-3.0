@@ -16,6 +16,9 @@ const ProjectCardContainer = styled("div")`
   transition: all 150ms ease-in-out;
   text-decoration: none;
   color: currentColor;
+  box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.06);
+  padding: 40px;
+  border-radius: 0.75em;
 
   @media (max-width: 950px) {
     grid-template-columns: 4.5fr 7fr;
@@ -105,7 +108,6 @@ const ProjectCardImageContainer = styled("div")`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid #f4f4f4;
   padding: 5px;
 `
 

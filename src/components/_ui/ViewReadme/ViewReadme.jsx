@@ -14,6 +14,7 @@ const ViewContainer = styled(animated.div)`
   z-index: 1001;
   width: 70%;
   max-height: 90%;
+  box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.06);
 
   border-radius: 5px;
   overflow-y: hidden;
