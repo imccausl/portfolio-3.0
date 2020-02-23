@@ -43,7 +43,9 @@ const DefaultView = ({ error, languages, codingTime }) => {
           <h2
             style={{
               padding: "5px 10px",
-              fontSize: "4em",
+              fontSize: "3.8em",
+              lineHeight: "1.2",
+              fontWeight: "800",
             }}
           >
             <span>
