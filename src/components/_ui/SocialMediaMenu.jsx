@@ -33,12 +33,9 @@ const makeSocialLinks = (data, direction) => {
       <div className="icon" style={{ order: urlMap[social].order }}>
         <SocialMediaIconsReact
           key={`${social}-${data[social]}`}
-          borderColor="rgba(0,0,0,0.25)"
-          borderWidth="5"
-          borderStyle="solid"
           icon={`${social}`}
           iconColor="rgba(255,255,255,1)"
-          iconSize="6"
+          iconSize="3"
           roundness="50%"
           url={`${urlMap[social].url}${data[social]}`}
           size={direction === "row" ? "50" : "35"}
