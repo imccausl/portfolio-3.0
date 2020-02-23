@@ -3,6 +3,12 @@ module.exports = {
     title: `Ian McCausland`,
     description: `Personal Website`,
     author: `Ian McCausland | ianmccaus.land`,
+    social: {
+      twitter: "imccausl",
+      github: "imccausl",
+      codepen: "imccausl",
+      linkedin: "ian-mccausland",
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

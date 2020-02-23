@@ -39,6 +39,11 @@ const Layout = ({ children }) => (
         site {
           siteMetadata {
             title
+            social {
+              linkedin
+              github
+              codepen
+            }
           }
         }
       }
@@ -49,7 +54,7 @@ const Layout = ({ children }) => (
         <div className="Layout">
           <Header />
           <main className="Layout__content">{children}</main>
-          <Footer />
+          <Footer social={data.site.siteMetadata.social} />
         </div>
       </LayoutContainer>
     )}

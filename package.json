@@ -41,7 +41,8 @@
     "react-spinners": "^0.6.1",
     "react-spring": "^8.0.27",
     "sanitize-html": "^1.21.1",
-    "smooth-scroll": "^16.0.3"
+    "smooth-scroll": "^16.0.3",
+    "social-media-icons-react": "^1.0.10"
   },
   "devDependencies": {
     "gatsby-plugin-remove-trailing-slashes": "^2.0.11",
