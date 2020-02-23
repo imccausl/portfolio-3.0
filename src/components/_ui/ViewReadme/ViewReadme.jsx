@@ -85,7 +85,7 @@ const ReadMe = props => {
         setData({ loading: false, payload: data, error: false })
       })
     )
-  }, [])
+  }, [repoName])
 
   const renderMarkdown = data => {
     const cleaned = sanitizeHtml(data)

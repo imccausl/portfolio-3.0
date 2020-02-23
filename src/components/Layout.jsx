@@ -10,6 +10,8 @@ import Footer from "components/Footer"
 import Header from "components/Header"
 import "styles/fonts.scss"
 
+import SocialMediaMenu from "./_ui/SocialMediaMenu"
+
 const LayoutContainer = styled.div`
   max-width: ${dimensions.maxwidthDesktop}px;
   padding-left: ${dimensions.paddingHorizontalDesktop}em;
@@ -29,6 +31,21 @@ const LayoutContainer = styled.div`
   .Layout__content {
     margin-top: 5em;
     padding-bottom: 5em;
+  }
+`
+
+const SocialSidebar = styled("div")`
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  transition: left 1s linear;
+
+  @media (max-width: ${dimensions.maxwidthMobile}px) {
+    left: -100px;
+  }
+
+  @media (max-width: ${dimensions.maxwidthTablet}px) {
+    left: -100px;
   }
 `
 
@@ -54,6 +71,12 @@ const Layout = ({ children }) => (
         <div className="Layout">
           <Header />
           <main className="Layout__content">{children}</main>
+          <SocialSidebar>
+            <SocialMediaMenu
+              socialUsernames={data.site.siteMetadata.social}
+              direction="column"
+            />
+          </SocialSidebar>
           <Footer social={data.site.siteMetadata.social} />
         </div>
       </LayoutContainer>
