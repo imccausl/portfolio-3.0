@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react"
+import { useSpring, animated } from "react-spring"
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 
 const HeaderContainer = styled("div")`
-  position: fixed;
-  transition: background 500ms linear;
-  left: 0;
+  position: static;
+  transition: transform 300ms linear;
   top: 0;
+  left: 0;
   height: 3em;
   padding-left: 10px;
   width: 100%;
@@ -41,9 +42,17 @@ const HeaderStyle = styled("h1")`
 `
 
 const Header = () => {
-  const [darkened, setDarkened] = useState(false)
+  const [isHeaderVisible, setHeaderVisible] = useState(false)
+  const [lastScrollTop, setLastScrollTop] = useState(0)
+  // const headerProps = useSpring({
+  //   top: isHeaderVisible ? 0 : -1,
+  //   position: isHeaderVisible ? "fixed" : "static",
+  // })
   const handleScroll = () => {
-    setDarkened(window.scrollY >= 70)
+    const st = window.pageYOffset || document.body.scrollTop
+
+    setHeaderVisible(st < lastScrollTop)
+    setLastScrollTop(st <= 0 ? 0 : st)
   }
 
   useEffect(() => {
@@ -52,14 +61,26 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", () => handleScroll)
     }
-  }, [])
+  }, [lastScrollTop])
+
+  const scrollTopThresholdReached = lastScrollTop >= 30
+  let transformValue = "0%"
+
+  if (
+    (isHeaderVisible && scrollTopThresholdReached) ||
+    (isHeaderVisible && !scrollTopThresholdReached) ||
+    (!isHeaderVisible && !scrollTopThresholdReached)
+  ) {
+    transformValue = "0%"
+  } else {
+    transformValue = "-100%"
+  }
   return (
     <HeaderContainer
+      delay={300}
       style={{
-        background: darkened
-          ? "rgba(235, 235, 235, 0.9)"
-          : "rgba(235, 235, 235, 0)",
-        borderBottom: darkened ? "1px solid rgb(223, 223, 223)" : "none",
+        position: scrollTopThresholdReached ? "fixed" : "absolute",
+        transform: `translateY(${transformValue})`,
       }}
     >
       <HeaderContent>
