@@ -29,7 +29,6 @@ const LayoutContainer = styled.div`
   }
 
   .Layout__content {
-    margin-top: 5em;
     padding-bottom: 5em;
   }
 `
@@ -73,10 +72,10 @@ const Layout = ({ children }) => (
         <LayoutContainer className="div">
           <Global styles={[globalStyles, typeStyles]} />
           <div className="Layout">
-            {/* <Intro
+            <Intro
               name={data.site.siteMetadata.author}
               description={data.site.siteMetadata.description}
-            /> */}
+            />
             <main className="Layout__content">{children}</main>
             <SocialSidebar>
               <SocialMediaMenu

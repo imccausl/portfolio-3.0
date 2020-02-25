@@ -15,7 +15,7 @@ const IntroDescription = styled("div")`
 `
 
 const IntroContainer = styled("div")`
-  margin: 4em 0;
+  margin: 4em 0 0 0;
 `
 
 export default props => {
@@ -24,8 +24,11 @@ export default props => {
     <IntroContainer>
       <IntroHeaderStyle>I&rsquo;m {name}</IntroHeaderStyle>
       <IntroHeaderStyle>
-        and I{" "}
-        <span style={{ color: "orangered" }}>build things for the web</span>.
+        and I am{" "}
+        <span style={{ color: "orangered" }}>
+          a full stack developer from Toronto
+        </span>
+        .
       </IntroHeaderStyle>
       <IntroDescription>{description}</IntroDescription>
     </IntroContainer>

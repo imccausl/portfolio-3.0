@@ -140,10 +140,11 @@ const RenderBody = ({ home, projects, meta }) => (
         },
       ].concat(meta)}
     />
-    <Hero>
+    <section id="stats">
       <CodingTime render={props => <DefaultView {...props} />} />
-    </Hero>
+    </section>
     <Section id="projects" style={{ marginBottom: 0 }}>
+      <h1>Selected Projects</h1>
       <ListRepositories
         render={({
           name,
