@@ -8,10 +8,10 @@ import typeStyles from "styles/typography"
 import dimensions from "styles/dimensions"
 import Footer from "components/Footer"
 import Header from "components/Header"
+import Intro from "components/Intro"
 import "styles/fonts.scss"
 
 import SocialMediaMenu from "./_ui/SocialMediaMenu"
-
 const LayoutContainer = styled.div`
   max-width: ${dimensions.maxwidthDesktop}px;
   padding-left: ${dimensions.paddingHorizontalDesktop}em;
@@ -56,6 +56,8 @@ const Layout = ({ children }) => (
         site {
           siteMetadata {
             title
+            author
+            description
             social {
               linkedin
               github
@@ -67,10 +69,14 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        <Header />
+        {/* <Header /> */}
         <LayoutContainer className="div">
           <Global styles={[globalStyles, typeStyles]} />
           <div className="Layout">
+            {/* <Intro
+              name={data.site.siteMetadata.author}
+              description={data.site.siteMetadata.description}
+            /> */}
             <main className="Layout__content">{children}</main>
             <SocialSidebar>
               <SocialMediaMenu

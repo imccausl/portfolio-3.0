@@ -43,8 +43,8 @@ const DefaultView = ({ error, languages, codingTime }) => {
           <h2
             style={{
               padding: "5px 10px",
-              fontSize: "3.8em",
-              lineHeight: "1.2",
+              fontSize: "3.2em",
+              lineHeight: "1.4",
               fontWeight: "800",
             }}
           >

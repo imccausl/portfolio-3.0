@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Ian McCausland`,
-    description: `Personal Website`,
-    author: `Ian McCausland | ianmccaus.land`,
+    description: ``,
+    author: `Ian McCausland`,
     social: {
       twitter: "imccausl",
       github: "imccausl",
