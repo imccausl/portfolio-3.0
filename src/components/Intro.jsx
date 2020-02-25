@@ -9,7 +9,7 @@ const IntroHeaderStyle = styled("div")`
 
 const IntroDescription = styled("div")`
   font-size: 1.5em;
-  font-weight: 800;
+  font-weight: 600;
   margin-top: 2em;
   max-width: 75%;
 `
@@ -25,10 +25,8 @@ export default props => {
       <IntroHeaderStyle>I&rsquo;m {name}</IntroHeaderStyle>
       <IntroHeaderStyle>
         and I am{" "}
-        <span style={{ color: "orangered" }}>
-          a full stack developer from Toronto
-        </span>
-        .
+        <span style={{ color: "orangered" }}>a full stack developer</span> from
+        Toronto .
       </IntroHeaderStyle>
       <IntroDescription>{description}</IntroDescription>
     </IntroContainer>

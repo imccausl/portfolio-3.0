@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Ian McCausland`,
-    description: ``,
+    description: `Here is some other stuff about me that I am going to add in here in the form of a paragraph. How long should this be, well I am not exactly sure.`,
     author: `Ian McCausland`,
     social: {
       twitter: "imccausl",
