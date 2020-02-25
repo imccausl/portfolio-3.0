@@ -3,6 +3,7 @@ import styled from "@emotion/styled"
 import { useSpring, animated } from "react-spring"
 import marked from "marked"
 import sanitizeHtml from "sanitize-html"
+import dimensions from "styles/dimensions"
 
 import ProjectCard, { ActionButtons } from "../../ProjectCard"
 
@@ -21,6 +22,16 @@ const ViewContainer = styled(animated.div)`
 
   div {
     margin-bottom: 5px;
+  }
+
+  @media (max-width: ${dimensions.maxwidthTablet}px) {
+    width: 85%;
+    min-height: 80%;
+  }
+
+  @media (max-width: ${dimensions.maxwidthMobile}px) {
+    width: 85%;
+    min-height: 80%;
   }
 `
 

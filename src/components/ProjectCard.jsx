@@ -32,6 +32,7 @@ const ProjectCardContainer = styled("div")`
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     margin-bottom: 2em;
     grid-gap: 0;
+    box-shadow: none;
   }
 `
 
