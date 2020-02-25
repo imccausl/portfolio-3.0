@@ -5,18 +5,20 @@ import styled from "@emotion/styled"
 import colors from "styles/colors"
 
 const HeaderContainer = styled("div")`
-  position: relative;
-  top: 0;
-  left: 0;
-  height: 3em;
-  padding-left: 10px;
-  width: 100%;
-  z-index: 50;
+  background-color: white;
+
+  .headroom--pinned {
+    background-color: white;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+  }
 `
 
 const HeaderContent = styled("div")`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 4em;
 
   h1 {
     font-size: 2.2em;
@@ -40,10 +42,29 @@ const HeaderStyle = styled("h1")`
   margin: 0;
 `
 
+const NavStyle = styled("nav")`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  margin: 0;
+  font-size: 1.4em;
+  font-weight: 00;
+  color: black;
+
+  a {
+    color: rgb(58, 103, 178);
+    text-decoration: none;
+  }
+`
+
 const Header = () => {
   return (
-    <Headroom>
-      <HeaderContainer>
+    <HeaderContainer>
+      <Headroom>
         <HeaderContent>
           <HeaderStyle>
             <Link to="/#top">
@@ -52,8 +73,8 @@ const Header = () => {
             </Link>
           </HeaderStyle>
         </HeaderContent>
-      </HeaderContainer>
-    </Headroom>
+      </Headroom>
+    </HeaderContainer>
   )
 }
 
