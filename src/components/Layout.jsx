@@ -68,7 +68,7 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        {/* <Header /> */}
+        <Header />
         <LayoutContainer className="div">
           <Global styles={[globalStyles, typeStyles]} />
           <div className="Layout">
