@@ -12,6 +12,7 @@ const IntroDescription = styled("div")`
   font-weight: 600;
   margin-top: 2em;
   max-width: 75%;
+  color: #6a6a6a;
 `
 
 const IntroContainer = styled("div")`
