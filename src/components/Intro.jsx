@@ -16,7 +16,7 @@ const IntroDescription = styled("div")`
 `
 
 const IntroContainer = styled("div")`
-  margin: 4em 0 0 0;
+  margin: 4em 0;
 `
 
 export default props => {
