@@ -10,6 +10,10 @@ const HeaderContainer = styled("div")`
   .headroom--pinned {
     background-color: white;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+
+    div {
+      padding: 0 4em;
+    }
   }
 `
 
@@ -18,7 +22,8 @@ const HeaderContent = styled("div")`
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  padding: 0 4em;
+  max-width: 1100px;
+  margin: 0 auto;
 
   h1 {
     font-size: 2.2em;

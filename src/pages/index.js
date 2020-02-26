@@ -142,7 +142,6 @@ const RenderBody = ({ home, projects, meta }) => (
       ].concat(meta)}
     />
     <Section id="stats">
-      <h1>Stats</h1>
       <CodingTime render={props => <DefaultView {...props} />} />
     </Section>
     <Section id="projects" style={{ marginBottom: 0 }}>

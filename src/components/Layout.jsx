@@ -68,10 +68,11 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        <Header />
         <LayoutContainer className="div">
           <Global styles={[globalStyles, typeStyles]} />
           <div className="Layout">
+            <Header />
+
             <Intro
               name={data.site.siteMetadata.author}
               description={data.site.siteMetadata.description}
