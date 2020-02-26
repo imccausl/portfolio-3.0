@@ -7,7 +7,8 @@ import colors from "styles/colors"
 const HeaderContainer = styled("div")`
   background-color: white;
 
-  .headroom--pinned {
+  .headroom--pinned,
+  .headroom--unpinned {
     background-color: white;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
 
