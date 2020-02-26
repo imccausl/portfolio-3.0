@@ -12,7 +12,6 @@ const IntroDescription = styled("div")`
   font-weight: 600;
   margin-top: 2em;
   max-width: 75%;
-  color: #6a6a6a;
 `
 
 const IntroContainer = styled("div")`
@@ -31,7 +30,11 @@ export default props => {
         </span>{" "}
         from Toronto.
       </IntroHeaderStyle>
-      <IntroDescription>{description}</IntroDescription>
+      <IntroDescription>
+        <span style={{ color: "white", backgroundColor: "#f46b3f" }}>
+          {description}
+        </span>
+      </IntroDescription>
     </IntroContainer>
   )
 }
