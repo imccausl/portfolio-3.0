@@ -83,11 +83,12 @@ const Hero = styled("div")`
 const Section = styled("div")`
   margin-bottom: 2em;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
 
   h1 {
-    display: inline-block;
-    color: rgb(244, 107, 63);
+    color: white;
+    background-color: #f43f3f;
   }
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
@@ -140,9 +141,10 @@ const RenderBody = ({ home, projects, meta }) => (
         },
       ].concat(meta)}
     />
-    <section id="stats">
+    <Section id="stats">
+      <h1>Stats</h1>
       <CodingTime render={props => <DefaultView {...props} />} />
-    </section>
+    </Section>
     <Section id="projects" style={{ marginBottom: 0 }}>
       <h1>Selected Projects</h1>
       <ListRepositories

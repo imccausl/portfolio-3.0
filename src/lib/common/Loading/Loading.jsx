@@ -2,7 +2,7 @@ import React from "react"
 import { PropagateLoader } from "react-spinners"
 
 const Loading = () => (
-  <header>
+  <header style={{ width: "100%" }}>
     <div
       style={{
         display: "flex",
@@ -10,11 +10,10 @@ const Loading = () => (
         justifyContent: "center",
         alignItems: "center",
         height: "300px",
+        width: "100%",
       }}
     >
-      <h2>
-        <PropagateLoader />
-      </h2>
+      <PropagateLoader />
     </div>
   </header>
 )

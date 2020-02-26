@@ -21,7 +21,6 @@ class CodingTime extends React.Component {
         })
       })
     )
-
     fetchJsonp(wakaTime.codingTimeLink).then(response =>
       response.json().then(data => {
         this.setState({

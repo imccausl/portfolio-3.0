@@ -26,8 +26,10 @@ export default props => {
       <IntroHeaderStyle>I&rsquo;m {name}</IntroHeaderStyle>
       <IntroHeaderStyle>
         and I am{" "}
-        <span style={{ color: "orangered" }}>a full stack developer</span> from
-        Toronto.
+        <span style={{ backgroundColor: "#F43F3F", color: "white" }}>
+          a full stack developer
+        </span>{" "}
+        from Toronto.
       </IntroHeaderStyle>
       <IntroDescription>{description}</IntroDescription>
     </IntroContainer>
