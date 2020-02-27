@@ -1,10 +1,19 @@
 import React from "react"
 import styled from "@emotion/styled"
+import dimensions from "styles/dimensions"
 
 const IntroHeaderStyle = styled("div")`
   font-size: 4.7em;
   font-weight: 800;
   line-height: 1.3;
+
+  @media (max-width: ${dimensions.maxwidthTablet}px) {
+    font-size: 4.2em;
+  }
+
+  @media (max-width: ${dimensions.maxwidthMobile}px) {
+    font-size: 3em;
+  }
 `
 
 const IntroDescription = styled("div")`

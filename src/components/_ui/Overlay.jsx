@@ -15,8 +15,8 @@ const OverlayContainer = styled(animated.div)`
   z-index: 1000;
   left: 0;
   top: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 `
 
 export default props => {
@@ -24,6 +24,7 @@ export default props => {
   const fadeStyle = useSpring({ o: visible ? 0.5 : 0 })
   // prevent scrolling under the overlay
   document.body.style.overflow = visible ? "hidden" : "scroll"
+  document.body.style.height = visible ? "100%" : ""
 
   return (
     <OverlayContainer
