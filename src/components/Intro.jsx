@@ -21,6 +21,14 @@ const IntroDescription = styled("div")`
   font-weight: 600;
   margin-top: 2em;
   max-width: 75%;
+
+  @media (max-width: ${dimensions.maxwidthTablet}px) {
+    font-size: 1.2em;
+  }
+
+  @media (max-width: ${dimensions.maxwidthMobile}px) {
+    font-size: 1em;
+  }
 `
 
 const IntroContainer = styled("div")`

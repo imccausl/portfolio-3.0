@@ -35,6 +35,7 @@ const ProjectCardContainer = styled("div")`
     margin-bottom: 2em;
     grid-gap: 0;
     box-shadow: none;
+    padding: 0;
   }
 `
 
@@ -127,15 +128,15 @@ const ActionButtons = props => {
     <CardActionContainer>
       <a href={repo} target="_blank" rel="noopener noreferrer">
         <Button className="Button--secondary">
-          <FaGithub />
-          <div style={{ marginLeft: "5px" }}>Github</div>
+          <FaGithub style={{ fontSize: "1.1em" }} />
+          <div style={{ marginLeft: "5px", marginBottom: "1px" }}>Github</div>
         </Button>
       </a>
 
       <a href={website} target="_blank" rel="noopener noreferrer">
         <Button className="Button--secondary" disabled={!website}>
-          <MdSlideshow />
-          <div style={{ marginLeft: "5px" }}>Demo</div>
+          <MdSlideshow style={{ fontSize: "1.2em" }} />
+          <div style={{ marginLeft: "5px", marginBottom: "2px" }}>Demo</div>
         </Button>
       </a>
     </CardActionContainer>
@@ -185,7 +186,7 @@ const ProjectCard = ({
             )}
           </div>
         </ProjectCardContent>
-        <ProjectPreview>
+        <ProjectPreview className="project-card-preview">
           <ProjectCardImageContainer>
             <ProjectCardImage
               style={{

@@ -30,8 +30,12 @@ const ViewContainer = styled(animated.div)`
   }
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
-    width: 85%;
-    min-height: 80%;
+    width: 99%;
+    min-height: 99%;
+
+    .project-card-preview {
+      display: none;
+    }
   }
 `
 

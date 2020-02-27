@@ -1,7 +1,23 @@
 import React from "react"
+import styled from "@emotion/styled"
 import { useSpring, animated } from "react-spring"
+import dimensions from "styles/dimensions"
 
 import { colors } from "./config"
+
+const DisplayText = styled.h2`
+  font-size: 3.2em;
+  line-height: 1.4;
+  font-weight: 800;
+
+  @media (max-width: ${dimensions.maxwidthTablet}px) {
+    font-size: 2.5em;
+  }
+
+  @media (max-width: ${dimensions.maxwidthMobile}px) {
+    font-size: 1.5em;
+  }
+`
 
 const makeLanguageList = languages => {
   return languages.map((lang, index) => {
@@ -40,13 +56,7 @@ const DefaultView = ({ error, languages, codingTime }) => {
             alignItems: "center",
           }}
         >
-          <h2
-            style={{
-              fontSize: "3.2em",
-              lineHeight: "1.4",
-              fontWeight: "800",
-            }}
-          >
+          <DisplayText>
             <span>
               In the last <span style={{ color: "orangered" }}>7 days</span> I
               have worked with{" "}
@@ -71,7 +81,7 @@ const DefaultView = ({ error, languages, codingTime }) => {
               </span>
               .
             </span>
-          </h2>
+          </DisplayText>
         </div>
       </header>
     </>

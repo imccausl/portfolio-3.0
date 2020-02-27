@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from "@emotion/styled"
 import { IoMdArrowForward } from "react-icons/io"
-
+import Button from "./Button"
 import Overlay from "components/_ui/Overlay"
 import ViewReadme from "components/_ui/ViewReadme"
 
@@ -50,9 +50,12 @@ export default ({
           visible={modalVisible}
         />
       </Overlay>
-      <LinkButton onClick={() => setModalVisible(true)}>
+      <Button
+        className="Button--secondary"
+        onClick={() => setModalVisible(true)}
+      >
         <div style={{ marginRight: "5px" }}>Read More</div> <IoMdArrowForward />
-      </LinkButton>
+      </Button>
     </>
   )
 }
