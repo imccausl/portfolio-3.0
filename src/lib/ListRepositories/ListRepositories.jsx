@@ -44,7 +44,7 @@ class ListRepositories extends React.Component {
         name: prettifyRepoName(name),
         repoName: name,
         html_url,
-        thumbnail: `https://raw.githubusercontent.com/imccausl/${name}/master/screenshot.png`,
+        thumbnail: `https://raw.githubusercontent.com/imccausl/${name}/master/screenshot.gif`,
         description,
         created_at,
         updated_at,
