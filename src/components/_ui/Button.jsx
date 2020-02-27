@@ -59,12 +59,20 @@ const ButtonContainer = styled("button")`
   }
 `
 
+const ButtonContent = styled("div")`
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
+
 class Button extends Component {
   render() {
     const { children, ...props } = this.props
     return (
       <ButtonContainer onClick={this.props.onClick} {...props}>
-        {this.props.children}
+        <ButtonContent>{this.props.children}</ButtonContent>
       </ButtonContainer>
     )
   }

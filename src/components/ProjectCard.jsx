@@ -2,9 +2,11 @@ import React from "react"
 import styled from "@emotion/styled"
 import dimensions from "styles/dimensions"
 import colors from "styles/colors"
+import { FaGithub } from "react-icons/fa"
+import { MdSlideshow } from "react-icons/md"
+import { IoMdArrowForward } from "react-icons/io"
 import PropTypes from "prop-types"
 import moment from "moment"
-
 import Button from "components/_ui/Button"
 import ReadMoreButton from "components/_ui/ReadMoreButton"
 
@@ -124,12 +126,16 @@ const ActionButtons = props => {
   return (
     <CardActionContainer>
       <a href={repo} target="_blank" rel="noopener noreferrer">
-        <Button className="Button--secondary">View Repo</Button>
+        <Button className="Button--secondary">
+          <FaGithub />
+          <div style={{ marginLeft: "5px" }}>Github</div>
+        </Button>
       </a>
 
       <a href={website} target="_blank" rel="noopener noreferrer">
         <Button className="Button--secondary" disabled={!website}>
-          View Demo
+          <MdSlideshow />
+          <div style={{ marginLeft: "5px" }}>Demo</div>
         </Button>
       </a>
     </CardActionContainer>
