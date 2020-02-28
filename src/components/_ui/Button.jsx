@@ -7,7 +7,7 @@ const ButtonContainer = styled("button")`
   display: inline-block;
   width: 100%;
   padding: 0;
-  border: 1px solid red;
+  border: 0;
   background: transparent;
   font-weight: 600;
   color: #5393fe;

@@ -51,7 +51,9 @@ export default ({
         />
       </Overlay>
       <Button
+        style={{ marginBottom: "5px" }}
         className="Button--secondary"
+        align="left"
         onClick={() => setModalVisible(true)}
       >
         <div style={{ marginRight: "5px" }}>Read More</div> <IoMdArrowForward />
