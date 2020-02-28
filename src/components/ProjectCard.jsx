@@ -134,7 +134,7 @@ const ActionButtons = props => {
       </a>
 
       <a href={website} target="_blank" rel="noopener noreferrer">
-        <Button className="Button--secondary">
+        <Button className="Button--secondary" disabled={!website}>
           <MdSlideshow style={{ fontSize: "1.2em" }} />
           <div style={{ marginLeft: "5px", marginBottom: "2px" }}>Demo</div>
         </Button>
