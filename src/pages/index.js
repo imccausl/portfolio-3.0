@@ -168,6 +168,7 @@ const RenderBody = ({ home, projects, meta }) => (
             repo={html_url}
             website={homepage}
             updated_at={updated_at}
+            created_at={created_at}
           />
         )}
       />
