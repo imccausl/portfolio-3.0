@@ -120,7 +120,7 @@ const NavMenuButton = styled("button")`
   right: 25px;
   padding: 0;
 
-  z-index: 1010;
+  z-index: 1000;
   transition: all 0.5s ease-in-out;
 
   font-size: 2em;
@@ -148,7 +148,7 @@ const NavMenu = styled(Link)`
   bottom: 25px;
   right: 25px;
   transition: all 0.5s ease-in-out;
-  z-index: 1005;
+  z-index: 999;
   box-shadow: ${props =>
     props.open ? "0 4px 20px 0 rgba(0, 0, 0, 0.1)" : "0"};
   border: 3px solid #f5f8ff;
