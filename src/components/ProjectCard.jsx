@@ -148,6 +148,7 @@ const ProjectCard = ({
   repoName,
   thumbnail,
   updated_at,
+  created_at,
   repo,
   website,
   hideReadMoreButton,
@@ -159,7 +160,7 @@ const ProjectCard = ({
         <ProjectCardContent className="ProjectCardContent">
           <div>
             <ProjectCardCategory>
-              {moment(updated_at).format("DD MMMM YYYY")}
+              {moment(created_at).format("DD MMMM YYYY")}
             </ProjectCardCategory>
             <ProjectCardTitle>{title}</ProjectCardTitle>
           </div>
