@@ -6,6 +6,7 @@ import colors from "styles/colors"
 
 const HeaderContainer = styled("div")`
   background-color: white;
+  padding: 0 2em;
 
   .headroom--pinned,
   .headroom--unpinned {
@@ -13,7 +14,7 @@ const HeaderContainer = styled("div")`
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
 
     div {
-      padding: 0 4em;
+      padding: 0 2em;
     }
   }
 `
@@ -45,7 +46,13 @@ const HeaderContent = styled("div")`
 `
 
 const HeaderStyle = styled("h1")`
-  margin: 0;
+  margin: 10px 0;
+`
+
+const LinkStyle = styled(Link)`
+  background-color: #edf3ff;
+  border-radius: 0.25em;
+  padding: 2px 10px;
 `
 
 const NavStyle = styled("nav")`
@@ -57,13 +64,25 @@ const NavStyle = styled("nav")`
   width: 100%;
 
   margin: 0;
-  font-size: 1.4em;
-  font-weight: 00;
   color: black;
+`
 
-  a {
-    color: rgb(58, 103, 178);
-    text-decoration: none;
+const NavLink = styled(Link)`
+  flex-shrink: 1;
+  color: rgb(58, 103, 178);
+  background-color: #edf3ff;
+  text-decoration: none;
+
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 800;
+
+  padding: 4px 10px;
+  border-radius: 1em;
+  margin-right: 10px;
+
+  &:last-of-type {
+    margin-right: 0;
   }
 `
 
@@ -73,11 +92,18 @@ const Header = () => {
       <Headroom>
         <HeaderContent>
           <HeaderStyle>
-            <Link to="/#top">
+            <LinkStyle to="/#top">
               <span style={{ color: colors.blue700 }}>ian</span>mccaus
               <span style={{ color: colors.blue300 }}>.</span>land
-            </Link>
+            </LinkStyle>
           </HeaderStyle>
+          <div style={{ padding: 0 }}>
+            <NavStyle>
+              <NavLink>Statistics</NavLink>
+              <NavLink>Selected Projects</NavLink>
+              <NavLink>About</NavLink>
+            </NavStyle>
+          </div>
         </HeaderContent>
       </Headroom>
     </HeaderContainer>
