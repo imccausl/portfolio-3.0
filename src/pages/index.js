@@ -25,6 +25,7 @@ const Hero = styled("div")`
     font-size: 4em;
     line-height: 1;
     background-color: rgb(244, 107, 63);
+
     color: white;
 
     a {
@@ -89,10 +90,16 @@ const Section = styled("div")`
   h1 {
     color: white;
     background-color: #f43f3f;
+    padding: 0 10px;
+    border-radius: 0.25em;
   }
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
     margin-bottom: 4em;
+  }
+
+  iframe {
+    margin-bottom: 15px;
   }
 
   &:last-of-type {
@@ -172,6 +179,34 @@ const RenderBody = ({ home, projects, meta }) => (
           />
         )}
       />
+    </Section>
+
+    <Section id="music" style={{ marginBottom: 0 }}>
+      <h1>Music</h1>
+      <iframe
+        width="100%"
+        height="166"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/163267698&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+      ></iframe>
+      <iframe
+        width="100%"
+        height="166"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/163267696&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+      ></iframe>
+      <iframe
+        width="100%"
+        height="166"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/163267693&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+      ></iframe>
     </Section>
   </>
 )

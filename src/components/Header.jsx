@@ -7,6 +7,8 @@ import styled from "@emotion/styled"
 import colors from "styles/colors"
 import dimensions from "styles/dimensions"
 
+import { NavMenuItem } from "../components/_ui/NavMenu"
+
 const HeaderContainer = styled("div")`
   background-color: white;
   padding: 0 2em;
@@ -106,7 +108,7 @@ const NavMenuButton = styled("button")`
 
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
 
-  border: 3px solid #f5f8ff;
+  border: 5px solid #f5f8ff;
   border-radius: 50%;
 
   text-decoration: none;
@@ -136,41 +138,28 @@ const NavMenuButton = styled("button")`
   }
 `
 
-const NavMenu = styled(Link)`
+const NavMenu = styled("div")`
   position: fixed;
   display: flex;
   flex-wrap: nowrap;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
   align-items: center;
 
-  color: black;
   bottom: 25px;
   right: 25px;
   transition: all 0.5s ease-in-out;
   z-index: 999;
-  box-shadow: ${props =>
-    props.open ? "0 4px 20px 0 rgba(0, 0, 0, 0.1)" : "0"};
-  border: 3px solid #f5f8ff;
-  text-decoration: none;
-  transform: translateX(150%)
-    translateY(${props => (props.open ? props.pos : "0%")}) scale(80%);
-  background-color: #edf3ff;
-  border-radius: 50%;
 
-  width: 75px;
+  width: 200px;
   height: 75px;
-  font-size: 2em;
 
-  &:hover {
-    color: rgb(58, 103, 178);
-    transform: translateY(${props => (props.open ? props.pos : "0%")})
-      scale(105%);
-  }
+  transform: translateX(150%)
+    translateY(${props => (props.open ? props.pos : "0%")});
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
     transform: translateX(0%)
-      translateY(${props => (props.open ? props.pos : "0%")}) scale(80%);
+      translateY(${props => (props.open ? props.pos : "0%")});
   }
 `
 
@@ -195,7 +184,8 @@ const Header = () => {
             <div style={{ padding: 0 }}>
               <NavStyle>
                 <NavLink>Statistics</NavLink>
-                <NavLink>Selected Projects</NavLink>
+                <NavLink>Projects</NavLink>
+                <NavLink>Music</NavLink>
                 <NavLink>About</NavLink>
               </NavStyle>
             </div>
@@ -205,17 +195,41 @@ const Header = () => {
       <NavMenuButton onClick={handleNavMenuClick} open={isNavMenuOpen}>
         <FaPlus />
       </NavMenuButton>
-      <NavMenu onClick={handleNavMenuClick} open={isNavMenuOpen} pos="-100%">
-        <FaQuestion />
+      <NavMenu open={isNavMenuOpen} pos="-100%">
+        <NavMenuItem
+          to="/#music"
+          name="about"
+          icon={<FaQuestion />}
+          closeCallback={handleNavMenuClick}
+          open={isNavMenuOpen}
+        />
       </NavMenu>
-      <NavMenu onClick={handleNavMenuClick} open={isNavMenuOpen} pos="-210%">
-        <IoMdMusicalNotes />
+      <NavMenu open={isNavMenuOpen} pos="-210%">
+        <NavMenuItem
+          to="/#music"
+          name="music"
+          icon={<IoMdMusicalNotes />}
+          closeCallback={handleNavMenuClick}
+          open={isNavMenuOpen}
+        />
       </NavMenu>
-      <NavMenu onClick={handleNavMenuClick} open={isNavMenuOpen} pos="-320%">
-        <FaClipboard />
+      <NavMenu open={isNavMenuOpen} pos="-320%">
+        <NavMenuItem
+          to="/#music"
+          name="projects"
+          icon={<FaClipboard />}
+          closeCallback={handleNavMenuClick}
+          open={isNavMenuOpen}
+        />
       </NavMenu>
-      <NavMenu onClick={handleNavMenuClick} open={isNavMenuOpen} pos="-430%">
-        <IoIosStats />
+      <NavMenu open={isNavMenuOpen} pos="-430%">
+        <NavMenuItem
+          to="/#music"
+          name="stats"
+          icon={<IoIosStats />}
+          closeCallback={handleNavMenuClick}
+          open={isNavMenuOpen}
+        />
       </NavMenu>
     </>
   )
