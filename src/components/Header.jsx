@@ -134,7 +134,7 @@ const NavMenuButton = styled("button")`
   @media (max-width: ${dimensions.maxwidthTablet}px) {
     transform: translateX(0%)
       rotate(${props => (props.open ? "45deg" : "0deg")})
-      scale(${props => (props.open ? "50%" : "100%")});
+      scale(${props => (props.open ? "0.5" : "1")});
   }
 `
 
