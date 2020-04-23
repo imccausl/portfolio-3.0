@@ -48,6 +48,7 @@ const NavMenuTooltip = styled("div")`
 
 export default props => {
   const { icon, open, name, to, closeCallback } = props
+  const itemId = `menu-item-${name}`
   const [showTooltip, setShowTooltip] = useState(false)
 
   function handleShowTooltip(item) {
@@ -61,6 +62,7 @@ export default props => {
   return (
     <>
       <NavMenuItem
+        aria-labelled-by={itemId}
         onClick={closeCallback}
         shadow={open}
         onMouseEnter={handleShowTooltip}
@@ -69,7 +71,9 @@ export default props => {
       >
         {icon}
       </NavMenuItem>
-      <NavMenuTooltip show={showTooltip}>{name}</NavMenuTooltip>
+      <NavMenuTooltip id={itemId} aria-hidden={showTooltip} show={showTooltip}>
+        {name}
+      </NavMenuTooltip>
     </>
   )
 }
