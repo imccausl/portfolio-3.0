@@ -192,7 +192,14 @@ const Header = () => {
           </HeaderContent>
         </Headroom>
       </HeaderContainer>
-      <NavMenuButton onClick={handleNavMenuClick} open={isNavMenuOpen}>
+      <NavMenuButton
+        onClick={handleNavMenuClick}
+        aria-expanded={isNavMenuOpen}
+        aria-label={
+          isNavMenuOpen ? "Close navigation menu" : "Open navigation menu"
+        }
+        open={isNavMenuOpen}
+      >
         <FaPlus />
       </NavMenuButton>
       <NavMenu open={isNavMenuOpen} pos="-100%">

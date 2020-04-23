@@ -67,11 +67,13 @@ export default props => {
         shadow={open}
         onMouseEnter={handleShowTooltip}
         onMouseLeave={handleHideTooltip}
+        onBlur={handleHideTooltip}
+        onFocus={handleShowTooltip}
         to={to}
       >
         {icon}
       </NavMenuItem>
-      <NavMenuTooltip id={itemId} aria-hidden={showTooltip} show={showTooltip}>
+      <NavMenuTooltip id={itemId} aria-hidden={!showTooltip} show={showTooltip}>
         {name}
       </NavMenuTooltip>
     </>
