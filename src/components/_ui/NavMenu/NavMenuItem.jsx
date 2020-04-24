@@ -9,10 +9,11 @@ const NavMenuItem = styled(Link)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  visibility: ${props => (props.open ? "visible" : "hidden")};
 
   color: black;
   box-shadow: ${props =>
-    props.shadow ? "0 4px 20px 0 rgba(0, 0, 0, 0.1)" : "0"};
+    props.open ? "0 4px 20px 0 rgba(0, 0, 0, 0.1)" : "0"};
   border: 5px solid #f5f8ff;
   text-decoration: none;
   transform: scale(80%);
@@ -23,9 +24,12 @@ const NavMenuItem = styled(Link)`
   height: 75px;
   transition: all 0.5s ease-in-out;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: rgb(58, 103, 178);
     transform: scale(105%);
+    outline: 0;
+    border: 5px solid orange;
   }
 `
 
@@ -64,7 +68,7 @@ export default props => {
       <NavMenuItem
         aria-labelled-by={itemId}
         onClick={closeCallback}
-        shadow={open}
+        open={open}
         onMouseEnter={handleShowTooltip}
         onMouseLeave={handleHideTooltip}
         onBlur={handleHideTooltip}
@@ -73,7 +77,12 @@ export default props => {
       >
         {icon}
       </NavMenuItem>
-      <NavMenuTooltip id={itemId} aria-hidden={!showTooltip} show={showTooltip}>
+      <NavMenuTooltip
+        navMenuOpen={open}
+        id={itemId}
+        aria-hidden={!showTooltip}
+        show={showTooltip && open}
+      >
         {name}
       </NavMenuTooltip>
     </>

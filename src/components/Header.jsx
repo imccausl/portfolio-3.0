@@ -121,14 +121,18 @@ const NavMenuButton = styled("button")`
   bottom: 25px;
   right: 25px;
   padding: 0;
+  outline: 0;
 
   z-index: 1000;
   transition: all 0.5s ease-in-out;
 
   font-size: 2em;
 
-  &:hover {
+  &:hover,
+  &:focus {
+    outline: 0;
     color: rgb(58, 103, 178);
+    border: 5px solid orange;
   }
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
@@ -141,6 +145,7 @@ const NavMenuButton = styled("button")`
 const NavMenu = styled("div")`
   position: fixed;
   display: flex;
+
   flex-wrap: nowrap;
   flex-direction: row-reverse;
   justify-content: flex-start;
