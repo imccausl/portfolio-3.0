@@ -31,7 +31,6 @@ export default ({
   website,
 }) => {
   const [modalVisible, setModalVisible] = useState(false)
-  console.log(modalVisible)
 
   return (
     <>
@@ -48,6 +47,7 @@ export default ({
           repo={repo}
           website={website}
           visible={modalVisible}
+          closeModal={() => setModalVisible(false)}
         />
       </Overlay>
       <Button

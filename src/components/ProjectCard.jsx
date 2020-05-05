@@ -86,6 +86,11 @@ const CardActionContainer = styled("div")`
     width: 100%;
   }
 
+  a:focus {
+    border-radius: 2em;
+    border: 5px solid orange;
+  }
+
   a:first-of-type {
     margin-right: 10px;
   }

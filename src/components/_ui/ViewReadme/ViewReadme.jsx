@@ -4,7 +4,7 @@ import { useSpring, animated } from "react-spring"
 import marked from "marked"
 import sanitizeHtml from "sanitize-html"
 import dimensions from "styles/dimensions"
-
+import withAccessibleKeyboardTrap from "../../../lib/withAccessibleKeyboardTrap"
 import ProjectCard, { ActionButtons } from "../../ProjectCard"
 
 const ViewContainer = styled(animated.div)`
@@ -121,7 +121,7 @@ const ReadMe = props => {
   )
 }
 
-export default props => {
+const ViewReadme = props => {
   const {
     visible,
     title,
@@ -165,3 +165,5 @@ export default props => {
     </ViewContainer>
   )
 }
+
+export default withAccessibleKeyboardTrap(ViewReadme)
