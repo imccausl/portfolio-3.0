@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
-import dimensions from "styles/dimensions"
+import colors from "styles/colors"
 
 const NavMenuItem = styled(Link)`
   display: flex;
@@ -24,7 +24,10 @@ const NavMenuItem = styled(Link)`
   height: 75px;
   transition: all 0.5s ease-in-out;
 
-  &:hover,
+  &:hover {
+    border: 5px solid ${colors.blue700};
+  }
+
   &:focus {
     color: rgb(58, 103, 178);
     transform: scale(105%);
@@ -47,7 +50,8 @@ const NavMenuTooltip = styled("div")`
 
   padding: 4px 10px;
   margin-right: 15px;
-  border-radius: 1em;
+  border-radius: 2em;
+  border: 5px solid orange;
 `
 
 export default props => {

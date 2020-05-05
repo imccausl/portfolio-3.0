@@ -128,7 +128,10 @@ const NavMenuButton = styled("button")`
 
   font-size: 2em;
 
-  &:hover,
+  &:hover {
+    border: 5px solid ${colors.blue700};
+  }
+
   &:focus {
     outline: 0;
     color: rgb(58, 103, 178);
