@@ -59,7 +59,6 @@ const withFocusTrap = WrappedComponent => {
             justifyContent: "center",
           }}
           ref={this.ref}
-          onKeyDown={this.handleKeyPress}
         >
           <WrappedComponent
             visible={visible}
@@ -73,4 +72,4 @@ const withFocusTrap = WrappedComponent => {
   }
 }
 
-export default withAccessibleFocusTrap
+export default withFocusTrap

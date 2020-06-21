@@ -1,3 +1,3 @@
-import withFocusTrap from "./withAccessibleFocusTrap"
+import withFocusTrap from "./withFocusTrap"
 
 export default withFocusTrap
