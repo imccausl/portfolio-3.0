@@ -5,7 +5,7 @@ const ESC_KEY = "Escape"
 const TABABLE_SELECTORS =
   '[tabindex]:not([tabindex="-1"]), button:not([tabindex="-1"]), [role="button"]:not([tabindex="-1"]), [href]:not([tabindex="-1"]), input:not([tabindex="-1"]), select:not([tabindex="-1"]), textarea:not([tabindex="-1"])'
 
-const withAccessibleFocusTrap = WrappedComponent => {
+const withFocusTrap = WrappedComponent => {
   return class extends React.Component {
     constructor(props) {
       super(props)
@@ -15,20 +15,13 @@ const withAccessibleFocusTrap = WrappedComponent => {
 
     state = { active: false }
 
-    componentDidMount() {
-      document.addEventListener("keyup", this.handleKeyUp)
-    }
-
-    componentWillUnmount() {
-      document.removeEventListener("keyup", this.handleKeyUp)
-    }
-
-    handleKeyUp = evt => {
+    handleKeyPress = evt => {
       const { closeModal, visible } = this.props
       const el = this.ref.current
       console.log("el:", el)
-      console.log(this.focusableElements)
+      console.log("evt:", evt)
       if (visible && el && evt.key === TAB_KEY) {
+        evt.preventDefault()
         if (!this.focusableElements && el && visible) {
           this.focusableElements = el.children[0].querySelectorAll(
             TABABLE_SELECTORS
@@ -44,9 +37,9 @@ const withAccessibleFocusTrap = WrappedComponent => {
           if (this.firstFocusableElement) {
             this.firstFocusableElement.focus()
           }
-        } else if (el && evt.key === ESC_KEY) {
-          closeModal()
         }
+      } else if (visible && evt.key === ESC_KEY) {
+        closeModal()
       }
     }
 
@@ -66,6 +59,7 @@ const withAccessibleFocusTrap = WrappedComponent => {
             justifyContent: "center",
           }}
           ref={this.ref}
+          onKeyDown={this.handleKeyPress}
         >
           <WrappedComponent
             visible={visible}
