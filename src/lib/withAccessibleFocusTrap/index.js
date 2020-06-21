@@ -1,3 +1,3 @@
-import withAccessibleKeyboardTrap from "./withAccessibleFocusTrap"
+import withFocusTrap from "./withAccessibleFocusTrap"
 
-export default withAccessibleKeyboardTrap
+export default withFocusTrap

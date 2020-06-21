@@ -4,7 +4,7 @@ import { useSpring, animated } from "react-spring"
 import marked from "marked"
 import sanitizeHtml from "sanitize-html"
 import dimensions from "styles/dimensions"
-import withAccessibleFocusTrap from "../../../lib/withAccessibleFocusTrap"
+import withFocusTrap from "../../../lib/withFocusTrap"
 import ProjectCard, { ActionButtons } from "../../ProjectCard"
 
 const ViewContainer = styled(animated.div)`
@@ -165,4 +165,4 @@ const ViewReadme = props => {
   )
 }
 
-export default withAccessibleFocusTrap(ViewReadme)
+export default withFocusTrap(ViewReadme)

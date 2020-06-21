@@ -5,7 +5,7 @@ const ESC_KEY = "Escape"
 const TABABLE_SELECTORS =
   '[tabindex]:not([tabindex="-1"]), button:not([tabindex="-1"]), [role="button"]:not([tabindex="-1"]), [href]:not([tabindex="-1"]), input:not([tabindex="-1"]), select:not([tabindex="-1"]), textarea:not([tabindex="-1"])'
 
-const withAccessibleFocusTrap = WrappedComponent => {
+const withFocusTrap = WrappedComponent => {
   return class extends React.Component {
     constructor(props) {
       super(props)
