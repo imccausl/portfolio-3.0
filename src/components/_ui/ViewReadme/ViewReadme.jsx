@@ -4,7 +4,7 @@ import { useSpring, animated } from "react-spring"
 import marked from "marked"
 import sanitizeHtml from "sanitize-html"
 import dimensions from "styles/dimensions"
-import withAccessibleKeyboardTrap from "../../../lib/withAccessibleKeyboardTrap"
+import withAccessibleFocusTrap from "../../../lib/withAccessibleFocusTrap"
 import ProjectCard, { ActionButtons } from "../../ProjectCard"
 
 const ViewContainer = styled(animated.div)`
@@ -97,7 +97,6 @@ const ReadMe = props => {
       `https://raw.githubusercontent.com/imccausl/${repoName}/master/README.md`
     ).then(response =>
       response.text().then(data => {
-        console.log(data)
         setData({ loading: false, payload: data, error: false })
       })
     )
@@ -166,4 +165,4 @@ const ViewReadme = props => {
   )
 }
 
-export default withAccessibleKeyboardTrap(ViewReadme)
+export default withAccessibleFocusTrap(ViewReadme)

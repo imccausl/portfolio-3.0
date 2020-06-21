@@ -1,9 +1,9 @@
-import React, { Component } from "react"
+import React, { PureComponent } from "react"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import dimensions from "styles/dimensions"
 
-const ButtonContainer = styled("button")`
+const makeActionableElement = (element = "button") => styled(element)`
   display: inline-block;
   width: 100%;
   padding: 0;
@@ -15,6 +15,7 @@ const ButtonContainer = styled("button")`
   font-size: 1rem;
   position: relative;
   transition: color 100ms ease-in-out;
+  text-decoration: none;
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     font-size: 1em;
@@ -40,26 +41,30 @@ const ButtonContainer = styled("button")`
   }
 
   &:hover {
+    cursor: pointer;
+    color: ${colors.blue400};
+    transition: color 100ms ease-in-out;
+  }
+
+  &[aria-disabled="true"]:hover, &:hover[disabled]{
     cursor: not-allowed;
     background: transparent;
     transition: color 100ms ease-in-out;
   }
 
-  &.Button--secondary {
+  &.Button--secondary[aria-disabled="false"] {
     /* background: ${colors.blue200}; */
     color: ${colors.blue600};
     padding: 0;
     font-size: 0.95rem;
 
-    &:hover:enabled {
+    &:link, &:visited {
       cursor: pointer;
-      color: ${colors.blue400};
-      transition: color 100ms ease-in-out;
     }
   }
 `
 
-const ButtonContent = styled("div")`
+const Content = styled("div")`
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
@@ -67,13 +72,26 @@ const ButtonContent = styled("div")`
   align-items: center;
 `
 
-class Button extends Component {
+const ButtonContainer = makeActionableElement("button")
+const AnchorContainer = makeActionableElement("a")
+export class Button extends PureComponent {
   render() {
     const { children, align, ...props } = this.props
     return (
       <ButtonContainer onClick={this.props.onClick} {...props}>
-        <ButtonContent align={align}>{this.props.children}</ButtonContent>
+        <Content align={align}>{this.props.children}</Content>
       </ButtonContainer>
+    )
+  }
+}
+
+export class AnchorLink extends PureComponent {
+  render() {
+    const { children, align, ...props } = this.props
+    return (
+      <AnchorContainer {...props}>
+        <Content align={align}>{this.props.children}</Content>
+      </AnchorContainer>
     )
   }
 }

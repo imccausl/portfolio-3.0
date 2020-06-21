@@ -6,7 +6,7 @@ import { FaGithub } from "react-icons/fa"
 import { MdSlideshow } from "react-icons/md"
 import PropTypes from "prop-types"
 import moment from "moment"
-import Button from "components/_ui/Button"
+import { AnchorLink } from "components/_ui/Button"
 import ReadMoreButton from "components/_ui/ReadMoreButton"
 
 const ProjectCardContainer = styled("div")`
@@ -130,19 +130,26 @@ const ActionButtons = props => {
 
   return (
     <CardActionContainer>
-      <a href={repo} target="_blank" rel="noopener noreferrer">
-        <Button className="Button--secondary">
-          <FaGithub style={{ fontSize: "1.1em" }} />
-          <div style={{ marginLeft: "5px", marginBottom: "1px" }}>Github</div>
-        </Button>
-      </a>
+      <AnchorLink
+        className="Button--secondary"
+        href={repo}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaGithub aria-hidden="true" style={{ fontSize: "1.1em" }} />
+        <div style={{ marginLeft: "5px", marginBottom: "1px" }}>Github</div>
+      </AnchorLink>
 
-      <a href={website} target="_blank" rel="noopener noreferrer">
-        <Button className="Button--secondary" disabled={!website}>
-          <MdSlideshow style={{ fontSize: "1.2em" }} />
-          <div style={{ marginLeft: "5px", marginBottom: "2px" }}>Demo</div>
-        </Button>
-      </a>
+      <AnchorLink
+        aria-disabled={!website}
+        className="Button--secondary"
+        href={website ? website : ""}
+        target={website && "_blank"}
+        rel={website && "noopener noreferrer"}
+      >
+        <MdSlideshow aria-hidden="true" style={{ fontSize: "1.2em" }} />
+        <div style={{ marginLeft: "5px", marginBottom: "2px" }}>Demo</div>
+      </AnchorLink>
     </CardActionContainer>
   )
 }
@@ -155,6 +162,7 @@ const ProjectCard = ({
   updated_at,
   created_at,
   repo,
+  uid,
   website,
   hideReadMoreButton,
   hideActionButtons,
@@ -180,6 +188,7 @@ const ProjectCard = ({
           >
             {!hideReadMoreButton && (
               <ReadMoreButton
+                key={uid}
                 title={title}
                 repoName={repoName}
                 description={description}

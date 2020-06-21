@@ -38,18 +38,21 @@ export default ({
         visible={modalVisible}
         toggleVisible={() => setModalVisible(false)}
       >
-        <ViewReadme
-          title={title}
-          repoName={repoName}
-          description={description}
-          thumbnail={thumbnail}
-          updated_at={updated_at}
-          repo={repo}
-          website={website}
-          visible={modalVisible}
-          closeModal={() => setModalVisible(false)}
-        />
+        {modalVisible && (
+          <ViewReadme
+            title={title}
+            repoName={repoName}
+            description={description}
+            thumbnail={thumbnail}
+            updated_at={updated_at}
+            repo={repo}
+            website={website}
+            visible={modalVisible}
+            closeModal={() => setModalVisible(false)}
+          />
+        )}
       </Overlay>
+
       <Button
         style={{ marginBottom: "5px" }}
         className="Button--secondary"
