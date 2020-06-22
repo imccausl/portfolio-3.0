@@ -3,7 +3,7 @@ import React from "react"
 const TAB_KEY = "Tab"
 const ESC_KEY = "Escape"
 const TABABLE_SELECTORS =
-  '[tabindex]:not([tabindex="-1"]), button:not([tabindex="-1"]), [role="button"]:not([tabindex="-1"]), [href]:not([tabindex="-1"]), input:not([tabindex="-1"]), select:not([tabindex="-1"]), textarea:not([tabindex="-1"])'
+  '[tabindex]:not([tabindex="-1"]), button:not([tabindex="-1"]), [role="button"]:not([tabindex="-1"]), a:not([tabindex="-1"]), input:not([tabindex="-1"]), select:not([tabindex="-1"]), textarea:not([tabindex="-1"])'
 
 const withFocusTrap = WrappedComponent => {
   return class extends React.Component {
@@ -13,17 +13,22 @@ const withFocusTrap = WrappedComponent => {
       this.ref = React.createRef()
     }
 
-    state = { active: false }
+    componentDidMount() {
+      document.addEventListener("keyup", this.handleKeyPress)
+    }
+
+    componentWillUnmount() {
+      document.removeEventListener("keyup", this.handleKeyPress)
+    }
+    state = { active: false, nodeIndex: 0 }
 
     handleKeyPress = evt => {
       const { closeModal, visible } = this.props
-      const el = this.ref.current
-      console.log("el:", el)
-      console.log("evt:", evt)
-      if (visible && el && evt.key === TAB_KEY) {
-        evt.preventDefault()
-        if (!this.focusableElements && el && visible) {
-          this.focusableElements = el.children[0].querySelectorAll(
+
+      console.log(evt)
+      if (visible && evt.key === TAB_KEY) {
+        if (!this.focusableElements) {
+          this.focusableElements = this.ref.current.firstChild.querySelectorAll(
             TABABLE_SELECTORS
           )
           this.firstFocusableElement = this.focusableElements[0]
@@ -32,20 +37,18 @@ const withFocusTrap = WrappedComponent => {
           ]
         }
 
-        if (!el.contains(evt.target)) {
-          evt.stopPropagation()
-          if (this.firstFocusableElement) {
+        if (!Array.from(this.focusableElements).includes(evt.target)) {
+          if (evt.shiftKey) {
+            this.lastFocusableElement.focus()
+          } else {
             this.firstFocusableElement.focus()
           }
+          evt.stopPropagation()
         }
       } else if (visible && evt.key === ESC_KEY) {
         closeModal()
       }
     }
-
-    focusableElements = null
-    firstFocusableElement = null
-    lastFocusableElement = null
 
     render() {
       const { visible, ...rest } = this.props
