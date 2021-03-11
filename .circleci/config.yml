@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Install python
-          command: sudo apt-get install python -y
+          command: sudo apt-get update && sudo apt-get install python -y
       - run: 
           name: Install dependencies
           command: yarn install
