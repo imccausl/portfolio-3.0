@@ -5,6 +5,9 @@ jobs:
       - image: cimg/node:15.11.0
     steps:
       - checkout
+      - run:
+          name: Install python
+          command: sudo apt-get install python -y
       - run: 
           name: Install dependencies
           command: yarn install
