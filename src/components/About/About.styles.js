@@ -1,11 +1,4 @@
-import React from "react"
-import Button from "components/_ui/Button"
-import styled from "@emotion/styled"
-import dimensions from "styles/dimensions"
-import { RichText } from "prismic-reactjs"
-import PropTypes from "prop-types"
-
-const AboutContainer = styled("div")`
+export const AboutContainer = styled("div")`
   padding-top: 1em;
   display: grid;
   grid-template-columns: 8em 1fr 8em;
@@ -22,7 +15,7 @@ const AboutContainer = styled("div")`
   }
 `
 
-const AboutLinkContainer = styled("div")`
+export const AboutLinkContainer = styled("div")`
   padding-top: 1em;
   padding-bottom: 3em;
   display: flex;
@@ -33,7 +26,7 @@ const AboutLinkContainer = styled("div")`
   }
 `
 
-const AboutLink = styled("a")`
+export const AboutLink = styled("a")`
   margin-bottom: 1.5em;
   font-weight: 600;
   line-height: 1.9;
@@ -57,7 +50,7 @@ const AboutLink = styled("a")`
   }
 `
 
-const AboutBio = styled("div")`
+export const AboutBio = styled("div")`
   padding-bottom: 3em;
   max-width: 480px;
 
@@ -66,7 +59,7 @@ const AboutBio = styled("div")`
   }
 `
 
-const AboutActions = styled("div")`
+export const AboutActions = styled("div")`
   padding-top: 1em;
   padding-bottom: 3em;
 
@@ -76,33 +69,3 @@ const AboutActions = styled("div")`
     grid-row: 1;
   }
 `
-
-const About = ({ bio, socialLinks }) => (
-  <AboutContainer>
-    <AboutLinkContainer>
-      {socialLinks.map((social, i) => (
-        <AboutLink key={i} href="" target="_blank" rel="noopener noreferrer">
-          {social.about_link[0].text}
-          <span>&#8594;</span>
-        </AboutLink>
-      ))}
-    </AboutLinkContainer>
-    <AboutBio>{RichText.render(bio)}</AboutBio>
-    <AboutActions>
-      <a
-        href="mailto:marguerite.roth@gmail.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button className="Button--secondary">Email me</Button>
-      </a>
-    </AboutActions>
-  </AboutContainer>
-)
-
-export default About
-
-About.propTypes = {
-  bio: PropTypes.array.isRequired,
-  socialLinks: PropTypes.array.isRequired,
-}
