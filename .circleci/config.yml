@@ -15,6 +15,9 @@ jobs:
           name: Build website
           command: yarn build
       - run:
+          name: Configure git
+          command: git config --global user.email "imccausl@gmail.com" && git config --global user.name "CircleCI Deploy"
+      - run:
           name: Deploy
           command: yarn deploy
 
