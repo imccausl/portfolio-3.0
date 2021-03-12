@@ -51,7 +51,11 @@ workflows:
   version: 2
   build-and-deploy-if-master:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
       - deploy:
           requires:
             - build
