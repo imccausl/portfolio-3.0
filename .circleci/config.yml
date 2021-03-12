@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ~/portfolio
+          at: .
       - run:
           name: Install python
           command: sudo apt-get update && sudo apt-get install python -y
@@ -19,6 +19,10 @@ jobs:
       - run:
           name: Build website
           command: yarn build && cp ./CNAME ./public
+      - persist_to_workspace:
+          root: . 
+          paths:
+            - .
       - store_artifacts:
           path: ~/portfolio/public
       - save_cache:
@@ -32,7 +36,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ~/portfolio
+          at: .
       - add_ssh_keys:
           fingerprints:
             - "2d:c5:cb:86:eb:2d:a9:3f:66:78:26:33:ae:32:9b:28"
