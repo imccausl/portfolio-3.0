@@ -13,11 +13,10 @@ jobs:
           command: yarn install
       - run:
           name: Build website
-          command: yarn build
+          command: yarn build && cp ./CNAME ./public
       - save_cache:
           key: build-deps-{{ checksum "yarn.lock" }}
           paths:
-            - ./CNAME
             - public
   deploy:
     docker:
@@ -34,7 +33,7 @@ jobs:
           key: build-deps-{{ checksum "yarn.lock" }}
       - run:
           name: Deploy
-          command: yarn deploy
+          command: yarn deploy:ci
 
 workflows:
   version: 2
