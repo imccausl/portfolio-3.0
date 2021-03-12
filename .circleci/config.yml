@@ -15,7 +15,7 @@ jobs:
           name: Build website
           command: yarn build && cp ./CNAME ./public
       - save_cache:
-          key: build-deps-{{ checksum "yarn.lock" }}
+          key: build-{{ checksum "yarn.lock" }}
           paths:
             - public
   deploy:
@@ -30,7 +30,7 @@ jobs:
           name: Configure git
           command: git config --global user.email "imccausl@gmail.com" && git config --global user.name "CircleCI Deploy"
       - restore_cache:
-          key: build-deps-{{ checksum "yarn.lock" }}
+          key: build-{{ checksum "yarn.lock" }}
       - run:
           name: Deploy
           command: yarn deploy:ci
