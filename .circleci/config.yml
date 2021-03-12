@@ -15,6 +15,7 @@ jobs:
     docker:
       - image: cimg/node:15.11.0
     steps:
+      - checkout
       - run:
           name: Build website
           command: yarn build
@@ -22,6 +23,7 @@ jobs:
     docker:
       - image: cimg/node:15.11.0
     steps:
+      - checkout
       - add_ssh_keys:
           fingerprints:
             - "2d:c5:cb:86:eb:2d:a9:3f:66:78:26:33:ae:32:9b:28"
