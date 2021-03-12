@@ -1,0 +1,65 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: cimg/node:15.11.0
+    working_directory: ~/portfolio
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Install python
+          command: sudo apt-get update && sudo apt-get install python -y
+      - restore_cache:
+          key: dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
+          name: Build website
+          command: yarn build && cp ./CNAME ./public && cp -r ./.circleci ./public
+      - persist_to_workspace:
+          root: . 
+          paths:
+            - .
+      - store_artifacts:
+          path: ~/portfolio/public
+      - save_cache:
+          key: dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/portfolio/node_modules
+  deploy:
+    docker:
+      - image: cimg/node:15.11.0
+    working_directory: ~/portfolio
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - add_ssh_keys:
+          fingerprints:
+            - "2d:c5:cb:86:eb:2d:a9:3f:66:78:26:33:ae:32:9b:28"
+      - run:
+          name: Configure git
+          command: git config --global user.email "imccausl@gmail.com" && git config --global user.name "CircleCI Deploy"
+      - run:
+          name: Deploy
+          command: yarn deploy:ci
+
+workflows:
+  version: 2
+  build-and-deploy-if-master:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
