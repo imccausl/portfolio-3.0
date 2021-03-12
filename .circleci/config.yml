@@ -1,31 +1,49 @@
 version: 2.1
 jobs:
-  build-and-deploy:
+  build:
     docker:
       - image: cimg/node:15.11.0
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "2d:c5:cb:86:eb:2d:a9:3f:66:78:26:33:ae:32:9b:28"
       - checkout
       - run:
           name: Install python
           command: sudo apt-get update && sudo apt-get install python -y
-      - run: 
+      - run:
           name: Install dependencies
           command: yarn install
-      - run: 
+      - run:
           name: Build website
           command: yarn build
+      - save_cache:
+          key: build-deps-{{ checksum "yarn.lock" }}
+          paths:
+            - public
+  deploy:
+    docker:
+      - image: cimg/node:15.11.0
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "2d:c5:cb:86:eb:2d:a9:3f:66:78:26:33:ae:32:9b:28"
       - run:
           name: Configure git
           command: git config --global user.email "imccausl@gmail.com" && git config --global user.name "CircleCI Deploy"
+      - restore_cache:
+          key: build-deps-{{ checksum "yarn.lock" }}
       - run:
           name: Deploy
           command: yarn deploy
 
 workflows:
   version: 2
-  build:
+  build-and-deploy-if-master:
     jobs:
-      - build-and-deploy
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
