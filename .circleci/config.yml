@@ -11,11 +11,17 @@ jobs:
       - run:
           name: Install dependencies
           command: yarn install
+      - save_cache:
+          key: build-deps-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
   build:
     docker:
       - image: cimg/node:15.11.0
     steps:
       - checkout
+      - restore_cache:
+          key: build-deps-{{ checksum "yarn.lock" }}
       - run:
           name: Build website
           command: yarn build
@@ -30,6 +36,8 @@ jobs:
       - run:
           name: Configure git
           command: git config --global user.email "imccausl@gmail.com" && git config --global user.name "CircleCI Deploy"
+      - restore_cache:
+          key: build-deps-{{ checksum "yarn.lock" }}
       - run:
           name: Deploy
           command: yarn deploy
