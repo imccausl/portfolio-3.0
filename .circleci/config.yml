@@ -17,6 +17,7 @@ jobs:
       - save_cache:
           key: build-deps-{{ checksum "yarn.lock" }}
           paths:
+            - ./CNAME
             - public
   deploy:
     docker:
