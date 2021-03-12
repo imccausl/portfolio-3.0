@@ -14,10 +14,11 @@ jobs:
       - run:
           name: Build website
           command: yarn build && cp ./CNAME ./public
+      - store_artifacts:
+          path: public
       - save_cache:
           key: deploy-{{ checksum "yarn.lock" }}
           paths:
-            - public
             - node_modules
   deploy:
     docker:
