@@ -12,11 +12,15 @@ jobs:
           name: Install dependencies
           command: yarn install
   build:
+     docker:
+      - image: cimg/node:15.11.0
     steps:
       - run:
           name: Build website
           command: yarn build
   deploy:
+     docker:
+      - image: cimg/node:15.11.0
     steps:
       - add_ssh_keys:
           fingerprints:
