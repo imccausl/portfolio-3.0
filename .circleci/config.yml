@@ -18,7 +18,7 @@ jobs:
           command: yarn install
       - run:
           name: Build website
-          command: yarn build && cp ./CNAME ./public
+          command: yarn build && cp ./CNAME ./public && cp -r ./.circleci ./public
       - persist_to_workspace:
           root: . 
           paths:
