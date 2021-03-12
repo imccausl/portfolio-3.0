@@ -38,7 +38,7 @@ jobs:
           name: Configure git
           command: git config --global user.email "imccausl@gmail.com" && git config --global user.name "CircleCI Deploy"
       - restore_cache:
-          key: deploy-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run:
           name: Deploy
           command: yarn deploy:ci
