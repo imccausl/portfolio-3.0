@@ -3,8 +3,11 @@ jobs:
   build:
     docker:
       - image: cimg/node:15.11.0
+    working_directory: ~/portfolio
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/portfolio
       - run:
           name: Install python
           command: sudo apt-get update && sudo apt-get install python -y
@@ -15,16 +18,19 @@ jobs:
           name: Build website
           command: yarn build && cp ./CNAME ./public
       - store_artifacts:
-          path: public
+          path: ~/portfolio/public
       - save_cache:
-          key: deploy-{{ checksum "yarn.lock" }}
+          key: dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
-            - node_modules
+            - ~/portfolio/node_modules
   deploy:
     docker:
       - image: cimg/node:15.11.0
+    working_directory: ~/portfolio
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/portfolio
       - add_ssh_keys:
           fingerprints:
             - "2d:c5:cb:86:eb:2d:a9:3f:66:78:26:33:ae:32:9b:28"
